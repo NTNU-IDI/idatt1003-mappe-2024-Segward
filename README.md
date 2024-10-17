@@ -31,7 +31,7 @@ What is the input and output of the program? What is the expected behaviour of t
 ## How to run the tests
 
 [//]: # (TODO: Describe how to run the tests here.)
-To run tests you need to use maven with the command `mvn test` <br />.
+To run tests you need to use maven with the command `mvn test`. <br />
 The project uses junit jupiter with maven.
 
 ## References
