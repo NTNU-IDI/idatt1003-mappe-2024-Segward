@@ -182,7 +182,7 @@ public class Main {
     public void CheckKitchen() {
       CheckFridge();
       CheckCounter();
-      //CheckRecipes();
+      CheckRecipes();
     }
   }
 
@@ -193,6 +193,7 @@ public class Main {
     Recipe bread = new Recipe("Bread", breadIngredients);
     Recipe[] recipes = {pancakes, bread};
     Kitchen kitchen = new Kitchen(fridge, counter, recipes);
+    kitchen.CheckKitchen();
 
   }
 }
