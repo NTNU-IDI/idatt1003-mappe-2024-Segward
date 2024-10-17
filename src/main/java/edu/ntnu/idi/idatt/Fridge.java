@@ -1,8 +1,12 @@
 package edu.ntnu.idi.idatt;
 
+// This class is responsible for the "Fridge" object.
+// The fridge object contains an array of ingredients and methods to interact with the ingredients.
 public class Fridge {
+
   Ingredient[] ingredients;
 
+  // The constructor for the fridge object and it takes an array of ingredients as a parameter.
   public Fridge(Ingredient[] ingredients) {
     this.ingredients = ingredients;
   }
@@ -69,6 +73,7 @@ public class Fridge {
   }
 
   // This method is used for printing the entire fridge.
+  // It uses StringBuilder to build the string.
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();

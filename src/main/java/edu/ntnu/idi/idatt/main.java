@@ -5,13 +5,14 @@ import java.util.Date;
 
 public class Main {
 
-  // This method is used to get the current date
+  // This method is used to get the current date.
   static Date getCurrentDate() {
     Date currentDate = new Date();
     return currentDate;
   }
 
   // This method is used to get the future date from the current date
+  // It is used to set the expiration date of the ingredients.
   static Date getFutureDate(int daysToAdd) {
     Calendar calendar = Calendar.getInstance();
     calendar.add(Calendar.DAY_OF_MONTH, daysToAdd);
@@ -19,7 +20,8 @@ public class Main {
     return futureDate;
   }
 
-  // This method is used to get the previous date from the current date
+  // This method is used to get the previous date from the current date.
+  // It is used to set the expiration date of the ingredients.
   static Date getPreviousDate(int daysToSubtract) {
     Calendar calendar = Calendar.getInstance();
     calendar.add(Calendar.DAY_OF_MONTH, -daysToSubtract);
