@@ -19,12 +19,19 @@ public class Ingredient {
     this.expirationDate = expirationDate;
   }
 
-  // Since the price is per unit we need to multiply it with the amount
+  // Since the price is per unit we need to multiply it with the amount.
   public double getPrice() {
     return amount * pricePerUnit;
   }
 
-  // This method is used for a simple string representation of the ingredient
+  // This method is used to check if the ingredient is expired by comparing the expiration date with
+  // the current date.
+  public boolean isExpired() {
+    Date currentDate = Main.getCurrentDate();
+    return expirationDate.before(currentDate);
+  }
+
+  // This method is used for a simple string representation of the ingredient.
   @Override
   public String toString() {
     return amount + " " + unit + " " + name;

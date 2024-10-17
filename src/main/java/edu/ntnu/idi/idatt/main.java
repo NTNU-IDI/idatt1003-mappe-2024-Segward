@@ -40,6 +40,5 @@ public class Main {
   // Main method
   public static void main(String[] args) {
     Fridge fridge = new Fridge(ingredients);
-    System.out.println(fridge);
   }
 }
