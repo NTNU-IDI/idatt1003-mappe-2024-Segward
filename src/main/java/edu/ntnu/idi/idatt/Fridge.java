@@ -60,16 +60,39 @@ public class Fridge {
     return totalPrice;
   }
 
-  // This method is used to get the expired ingredients in the fridge.
-  public String getExpiredIngredients() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("\n");
+  // This method is used to get the total amount of ingredients in the fridge.
+  // It is used for the function getExpiredIngredients.
+  public int getTotalExpiredIngredients() {
+    int totalExpiredIngredients = 0;
     for (Ingredient i : ingredients) {
       if (i.isExpired()) {
-        sb.append(i.toString()).append("\n");
+        totalExpiredIngredients++;
       }
     }
-    return sb.toString();
+    return totalExpiredIngredients;
+  }
+
+  // This method is used to get the expired ingredients in the fridge.
+  public Ingredient[] getExpiredIngredients() {
+    Ingredient[] expiredIngredients = new Ingredient[getTotalExpiredIngredients()];
+    int index = 0;
+    for (Ingredient i : ingredients) {
+      if (i.isExpired()) {
+        expiredIngredients[index] = i;
+        index++;
+      }
+    }
+    return expiredIngredients;
+  }
+
+  // This method is used to get the total price of the expired ingredients in the fridge.
+  public double getPriceOfExpiredIngredients() {
+    Ingredient[] ingredients = getExpiredIngredients();
+    double totalPrice = 0;
+    for (Ingredient i : ingredients) {
+      totalPrice += i.getPrice();
+    }
+    return totalPrice;
   }
 
   // This method is used for printing the entire fridge.
