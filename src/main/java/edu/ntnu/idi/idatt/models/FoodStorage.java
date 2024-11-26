@@ -9,7 +9,8 @@ import edu.ntnu.idi.idatt.registers.GroceryRegister;
 public class FoodStorage {
   GroceryRegister groceryRegister;
 
-  public FoodStorage(GroceryRegister groceryRegister) {
-    this.groceryRegister = groceryRegister;
+  /** Constructor for the FoodStorage class. */
+  public FoodStorage() {
+    groceryRegister = new GroceryRegister();
   }
 }
