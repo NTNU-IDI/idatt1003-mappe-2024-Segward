@@ -54,9 +54,8 @@ public class GroceryRegister {
    * @param amount
    */
   public void addAmount(String name, int index, int amount) {
-    if (index < groceries.size() && groceries.get(index).getName().equals(name)) {
-      groceries.get(index).addAmount(amount);
-    }
+    ArrayList<Grocery> groceryList = getGrocery(name);
+    groceryList.get(index).addAmount(amount);
   }
 
   /**
