@@ -5,10 +5,18 @@
     <groupId>edu.ntnu.idi.idatt</groupId>
     <artifactId>Mappe</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <!-- 
+        Maven version 17 
+    -->
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
+
+    <!-- 
+        Include junit jupter for testing 
+    -->
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -17,6 +25,10 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <!-- 
+        Include maven compiler plugin to be able to run maven tests 
+    -->
     <build>
         <plugins>
             <plugin>

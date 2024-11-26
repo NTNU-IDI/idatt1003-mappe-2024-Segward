@@ -1,3 +1,9 @@
-/Volumes/Samsung USB/NTNU/IDATT1003/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/Ingredient.java
-/Volumes/Samsung USB/NTNU/IDATT1003/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/Main.java
-/Volumes/Samsung USB/NTNU/IDATT1003/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/Fridge.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/models/FoodStorage.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/types/Recipe.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/util/CalendarDate.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/registers/GroceryRegister.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/models/DataStorage.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/types/Grocery.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/Main.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/models/UserInterface.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/main/java/edu/ntnu/idi/idatt/registers/RecipeRegister.java
