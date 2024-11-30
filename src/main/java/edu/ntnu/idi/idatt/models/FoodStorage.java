@@ -5,7 +5,7 @@ import edu.ntnu.idi.idatt.types.Grocery;
 import java.util.ArrayList;
 
 /**
- * @version 1.1
+ * @version 1.2
  * @since 1.0
  */
 public class FoodStorage {
@@ -39,5 +39,12 @@ public class FoodStorage {
     }
 
     groceryRegister.addAmount(name, index, amount);
+  }
+
+  public void enumerateGroceries() {
+    ArrayList<Grocery> groceries = groceryRegister.getGroceries();
+    for (int i = 0; i < groceries.size(); i++) {
+      System.out.println(i + ": " + groceries.get(i).getFormattedString());
+    }
   }
 }

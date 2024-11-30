@@ -4,13 +4,22 @@ import edu.ntnu.idi.idatt.types.Grocery;
 import java.util.ArrayList;
 
 /**
- * @version 1.0
+ * @version 1.2
  * @since 1.0
  */
 public class GroceryRegister {
   ArrayList<Grocery> groceries = new ArrayList<>();
 
   public GroceryRegister() {}
+
+  /**
+   * Returns a list of all groceries.
+   *
+   * @return a list of all groceries
+   */
+  public ArrayList<Grocery> getGroceries() {
+    return groceries;
+  }
 
   /**
    * Adds a grocery to the register.
