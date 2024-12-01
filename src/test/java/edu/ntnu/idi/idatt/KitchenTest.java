@@ -1,3 +1,3 @@
 package edu.ntnu.idi.idatt;
 
-public class MainTest {}
+public class KitchenTest {}

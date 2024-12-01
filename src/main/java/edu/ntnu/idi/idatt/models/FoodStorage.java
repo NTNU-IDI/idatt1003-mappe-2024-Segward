@@ -5,7 +5,7 @@ import edu.ntnu.idi.idatt.types.Grocery;
 import java.util.ArrayList;
 
 /**
- * @version 1.2
+ * @version 1.3
  * @since 1.0
  */
 public class FoodStorage {
@@ -14,6 +14,15 @@ public class FoodStorage {
   /** Constructor for the FoodStorage class. */
   public FoodStorage() {
     groceryRegister = new GroceryRegister();
+  }
+
+  /**
+   * Adds a grocery to the register.
+   *
+   * @param grocery
+   */
+  public void addGrocery(Grocery grocery) {
+    groceryRegister.addGrocery(grocery);
   }
 
   /**
@@ -41,10 +50,11 @@ public class FoodStorage {
     groceryRegister.addAmount(name, index, amount);
   }
 
+  /** Enumerates all groceries in the register. */
   public void enumerateGroceries() {
     ArrayList<Grocery> groceries = groceryRegister.getGroceries();
     for (int i = 0; i < groceries.size(); i++) {
-      System.out.println(i + ": " + groceries.get(i).getFormattedString());
+      System.out.println(groceries.get(i).getFormattedString());
     }
   }
 }
