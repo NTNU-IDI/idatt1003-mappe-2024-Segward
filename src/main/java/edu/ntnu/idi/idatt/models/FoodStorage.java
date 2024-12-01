@@ -17,6 +17,15 @@ public class FoodStorage {
   }
 
   /**
+   * Returns a list of all groceries.
+   *
+   * @return a list of all groceries
+   */
+  public ArrayList<Grocery> getGroceries() {
+    return groceryRegister.getGroceries();
+  }
+
+  /**
    * Adds a grocery to the register.
    *
    * @param grocery
@@ -31,30 +40,15 @@ public class FoodStorage {
    * @param name
    * @param amount
    */
-  public void addGroceryAmount(String name, int amount) {
-    ArrayList<Grocery> groceries = groceryRegister.getGrocery(name);
-    if (groceries.size() == 0) {
-      throw new IllegalArgumentException("No groceries with the name " + name + " found.");
-    }
-
-    for (int i = 0; i < groceries.size(); i++) {
-      System.out.println(i + ": " + groceries.get(i).getFormattedString());
-    }
-
-    System.out.println("Enter the index of the grocery you want to add to: ");
-    int index = Integer.parseInt(System.console().readLine());
-    if (index < 0 || index >= groceries.size()) {
-      throw new IllegalArgumentException("Invalid index.");
-    }
-
-    groceryRegister.addAmount(name, index, amount);
+  public void addGroceryAmount(int index, int amount) {
+    groceryRegister.addAmount(index, amount);
   }
 
   /** Enumerates all groceries in the register. */
   public void enumerateGroceries() {
     ArrayList<Grocery> groceries = groceryRegister.getGroceries();
     for (int i = 0; i < groceries.size(); i++) {
-      System.out.println(groceries.get(i).getFormattedString());
+      System.out.println(i + ": " + groceries.get(i).getFormattedString());
     }
   }
 }

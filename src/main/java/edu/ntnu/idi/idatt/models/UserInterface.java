@@ -112,9 +112,10 @@ public class UserInterface {
 
   /** Adds an amount to a grocery in the food storage */
   public void addAmount() {
-    String name = getStringInput("Enter the name of the grocery: ");
+    enumerateGroceries();
+    int index = getIntInput("Enter the index of the grocery: ");
     int amount = getIntInput("Enter the amount to add: ");
-    foodStorage.addGroceryAmount(name, amount);
+    foodStorage.addGroceryAmount(index, amount);
   }
 
   /** Enumerates groceries in the food storage */

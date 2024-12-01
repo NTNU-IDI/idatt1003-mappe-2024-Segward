@@ -62,9 +62,8 @@ public class GroceryRegister {
    * @param index
    * @param amount
    */
-  public void addAmount(String name, int index, int amount) {
-    ArrayList<Grocery> groceryList = getGrocery(name);
-    groceryList.get(index).addAmount(amount);
+  public void addAmount(int index, int amount) {
+    groceries.get(index).addAmount(amount);
   }
 
   /**
