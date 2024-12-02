@@ -184,12 +184,17 @@ public class UserInterface {
         break;
 
       case ADD_AMOUNT_TO_GROCERY:
+        int amount = getIntInput("Enter the amount to add: ");
+        String groceryName = getStringInput("Enter the name of the grocery: ");
+        foodStorage.addAmountToGrocery(groceryName, amount);
         break;
 
       case ADD_RECIPE_TO_RECIPEBOOK:
+        // huh?
         break;
 
       case REMOVE_AMOUNT_FROM_GROCERY:
+        
         break;
 
       case SEARCH_FOR_GROCERY:

@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Represents a grocery with a name, unit, amount, price per unit and expiration date.
  *
- * @version 1.2
+ * @version 1.3
  * @since 1.0
  */
 public class Grocery {
@@ -39,6 +39,15 @@ public class Grocery {
    */
   public void addAmount(int amount) {
     this.amount += amount;
+  }
+
+  /**
+   * Removes an amount from the grocery.
+   *
+   * @param amount the amount to remove
+   */
+  public void removeAmount(int amount) {
+    this.amount -= amount;
   }
 
   /**
