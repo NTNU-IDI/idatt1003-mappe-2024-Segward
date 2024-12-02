@@ -10,12 +10,10 @@ import java.util.Scanner;
  * @since 1.0
  */
 public class UserInterface {
-  DataStorage dataStorage;
   FoodStorage foodStorage;
   Scanner scanner;
   boolean isRunning;
   SimpleDateFormat formatter;
-  String[] menuOptions;
   final int ADD_GROCERY = 1;
   final int ADD_AMOUNT = 2;
   final int ENUMERATE_GROCERIES = 3;
@@ -28,7 +26,6 @@ public class UserInterface {
 
   /** Constructor for the UserInterface class. */
   public UserInterface() {
-    dataStorage = new DataStorage();
     foodStorage = new FoodStorage();
     scanner = new Scanner(System.in);
     isRunning = true;
