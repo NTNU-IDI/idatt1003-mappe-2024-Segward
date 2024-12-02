@@ -10,6 +10,7 @@ public class Recipe {
   private ArrayList<Grocery> ingredients;
   private String name;
   private String description;
+  private String instructions;
 
   /**
    * Creates a new recipe with the specified name, description and ingredients.
@@ -18,10 +19,11 @@ public class Recipe {
    * @param description the description of the recipe
    * @param ingredients the ingredients of the recipe
    */
-  public Recipe(String name, String description, ArrayList<Grocery> ingredients) {
+  public Recipe(String name, String description, ArrayList<Grocery> ingredients, String instructions) {
     this.ingredients = ingredients;
     this.name = name;
     this.description = description;
+    this.instructions = instructions;
   }
 
   /**
@@ -34,7 +36,7 @@ public class Recipe {
     for (Grocery ingredient : ingredients) {
       sb.append(ingredient.getFormattedString());
     }
-    return name + ": " + description + "\n" + sb.toString();
+    return name + ": " + description + "\n" + sb.toString() + "\n" + instructions;
   }
 
   /**
