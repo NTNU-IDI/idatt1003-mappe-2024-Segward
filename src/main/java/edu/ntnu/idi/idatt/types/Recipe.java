@@ -3,11 +3,11 @@ package edu.ntnu.idi.idatt.types;
 import java.util.ArrayList;
 
 /**
- * @version 1.2
+ * @version 1.3
  * @since 1.0
  */
 public class Recipe {
-  private ArrayList<Grocery> ingredients;
+  public ArrayList<Grocery> ingredients;
   public String name;
   public String description;
   public String instructions;

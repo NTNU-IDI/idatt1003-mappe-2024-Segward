@@ -4,11 +4,11 @@ import edu.ntnu.idi.idatt.types.Grocery;
 import java.util.ArrayList;
 
 /**
- * @version 1.5
+ * @version 1.6
  * @since 1.0
  */
 public class GroceryRegister {
-  private ArrayList<Grocery> groceries = new ArrayList<>();
+  public ArrayList<Grocery> groceries = new ArrayList<>();
 
   public GroceryRegister() {}
 
@@ -65,5 +65,16 @@ public class GroceryRegister {
       }
     }
     return null;
+  }
+
+  /**
+   * Sorts the groceries in the register by name
+   * 
+   * @return a sorted list of groceries
+   */
+  public ArrayList<Grocery> getSortedGroceryList() {
+    ArrayList<Grocery> sortedGroceries = new ArrayList<>(groceries);
+    sortedGroceries.sort((g1, g2) -> g1.name.compareTo(g2.name));
+    return sortedGroceries;
   }
 }

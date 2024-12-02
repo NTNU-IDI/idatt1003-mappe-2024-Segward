@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Represents a grocery with a name, unit, amount, price per unit and expiration date.
  *
- * @version 1.3
+ * @version 1.4
  * @since 1.0
  */
 public class Grocery {
@@ -13,7 +13,7 @@ public class Grocery {
   private String unit;
   public int amount;
   private double pricePerUnit;
-  private Date expirationDate;
+  public Date expirationDate;
 
   /**
    * Creates a new recipe with the specified name, unit, amount, price per unit and expiration date.

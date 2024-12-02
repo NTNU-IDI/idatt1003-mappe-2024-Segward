@@ -1,12 +1,12 @@
 package edu.ntnu.idi.idatt.models;
 
-import java.util.ArrayList;
-
 import edu.ntnu.idi.idatt.registers.GroceryRegister;
 import edu.ntnu.idi.idatt.types.Grocery;
+import edu.ntnu.idi.idatt.types.Recipe;
+import java.util.ArrayList;
 
 /**
- * @version 1.6
+ * @version 1.7
  * @since 1.0
  */
 public class FoodStorage {
@@ -92,5 +92,29 @@ public class FoodStorage {
     if (grocery.amount <= 0) {
       groceryRegister.removeGrocery(grocery);
     }
+  }
+
+  /** Prints a sorted list of groceries in the register. */
+  public void listSortedGroceries() {
+    ArrayList<Grocery> sortedGroceries = groceryRegister.getSortedGroceryList();
+    for (Grocery grocery : sortedGroceries) {
+      System.out.println(grocery.getFormattedString());
+    }
+  }
+
+  /**
+   * Checks if the food storage has all the groceries needed for a recipe.
+   *
+   * @param recipe the recipe to check
+   * @return true if the food storage has all the groceries needed for the recipe, false otherwise
+   */
+  public boolean hasGroceriesForRecipe(Recipe recipe) {
+    for (Grocery ingredient : recipe.ingredients) {
+      Grocery grocery = groceryRegister.getGrocery(ingredient.name);
+      if (grocery == null || grocery.amount < ingredient.amount) {
+        return false;
+      }
+    }
+    return true;
   }
 }

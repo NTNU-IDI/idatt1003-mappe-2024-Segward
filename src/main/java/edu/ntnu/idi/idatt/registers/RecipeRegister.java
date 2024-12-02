@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * @since 1.0
  */
 public class RecipeRegister {
-  private ArrayList<Recipe> recipies = new ArrayList<>();
+  public ArrayList<Recipe> recipies = new ArrayList<>();
 
   public RecipeRegister() {}
 
@@ -52,4 +52,8 @@ public class RecipeRegister {
     }
     return null;
   }
+
+
 }
+
+

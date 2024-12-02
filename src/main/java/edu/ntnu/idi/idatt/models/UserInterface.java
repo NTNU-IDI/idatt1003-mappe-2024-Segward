@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- * @version 1.6
+ * @version 1.7
  * @since 1.0
  */
 public class UserInterface {
@@ -30,8 +30,9 @@ public class UserInterface {
           + "9.   Get expired groceries\n"
           + "10.  Get sorted grocery list\n"
           + "11.  Check foodstorage for available recipies\n"
-          + "12.  Get groceries before a given expiration date\n"
-          + "13.  Exit\n";
+          + "12.  Check available groceries for a given recipe\n"
+          + "13.  Get groceries before a given expiration date\n"
+          + "14.  Exit\n";
 
   final int REGISTER_NEW_GROCERY = 1;
   final int REGISTER_NEW_RECIPE = 2;
@@ -44,8 +45,9 @@ public class UserInterface {
   final int GET_EXPIRED_GROCERIES = 9;
   final int GET_SORTED_GROCERY_LIST = 10;
   final int CHECK_FOODSTORAGE_FOR_AVAILABLE_RECIPIES = 11;
-  final int GET_GROCERIES_BEFORE_A_GIVEN_EXPIRATION_DATE = 12;
-  final int EXIT = 13;
+  final int GET_AVAILABLE_GROCERIES_FOR_A_GIVEN_RECIPE = 12;
+  final int GET_GROCERIES_BEFORE_A_GIVEN_EXPIRATION_DATE = 13;
+  final int EXIT = 14;
 
   /** Constructor for the UserInterface class. */
   public UserInterface() {}
@@ -222,13 +224,39 @@ public class UserInterface {
         break;
 
       case GET_SORTED_GROCERY_LIST:
-      
+        foodStorage.listSortedGroceries();
+        break;
+
+      case GET_AVAILABLE_GROCERIES_FOR_A_GIVEN_RECIPE:
+        String recipeName = getStringInput("Enter the name of the recipe: ");
+        Recipe recipeToCheck = recipeBook.getRecipe(recipeName);
+        boolean hasGroceries = foodStorage.hasGroceriesForRecipe(recipeToCheck);
+        if (hasGroceries) {
+          System.out.println("The food storage has all the groceries needed for the recipe.");
+        } else {
+          System.out.println(
+              "The food storage does not have all the groceries needed for the recipe.");
+        }
         break;
 
       case CHECK_FOODSTORAGE_FOR_AVAILABLE_RECIPIES:
+        ArrayList<Recipe> availableRecipes = recipeBook.getRecipes();
+        for (Recipe availableRecipe : availableRecipes) {
+          boolean hasGroceriesForRecipe = foodStorage.hasGroceriesForRecipe(availableRecipe);
+          if (hasGroceriesForRecipe) {
+            System.out.println("The food storage has all the groceries needed for the recipe: " + availableRecipe.name);
+          }
+        }
         break;
 
       case GET_GROCERIES_BEFORE_A_GIVEN_EXPIRATION_DATE:
+        Date expirationDate = getDateInput("Enter the expiration date (dd/MM/yyyy): ");
+        ArrayList<Grocery> groceries = foodStorage.groceryRegister.groceries;
+        for (Grocery g : groceries) {
+          if (g.expirationDate.before(expirationDate)) {
+            System.out.println(g.getFormattedString());
+          }
+        }
         break;
 
       case EXIT:
