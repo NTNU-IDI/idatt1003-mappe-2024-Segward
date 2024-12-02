@@ -3,14 +3,14 @@ package edu.ntnu.idi.idatt.types;
 import java.util.ArrayList;
 
 /**
- * @version 1.1
+ * @version 1.2
  * @since 1.0
  */
 public class Recipe {
   private ArrayList<Grocery> ingredients;
-  private String name;
-  private String description;
-  private String instructions;
+  public String name;
+  public String description;
+  public String instructions;
 
   /**
    * Creates a new recipe with the specified name, description and ingredients.
@@ -19,7 +19,8 @@ public class Recipe {
    * @param description the description of the recipe
    * @param ingredients the ingredients of the recipe
    */
-  public Recipe(String name, String description, ArrayList<Grocery> ingredients, String instructions) {
+  public Recipe(
+      String name, String description, ArrayList<Grocery> ingredients, String instructions) {
     this.ingredients = ingredients;
     this.name = name;
     this.description = description;

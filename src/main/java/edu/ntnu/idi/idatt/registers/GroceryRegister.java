@@ -4,22 +4,13 @@ import edu.ntnu.idi.idatt.types.Grocery;
 import java.util.ArrayList;
 
 /**
- * @version 1.2
+ * @version 1.4
  * @since 1.0
  */
 public class GroceryRegister {
-  ArrayList<Grocery> groceries = new ArrayList<>();
+  private ArrayList<Grocery> groceries = new ArrayList<>();
 
   public GroceryRegister() {}
-
-  /**
-   * Returns a list of all groceries.
-   *
-   * @return a list of all groceries
-   */
-  public ArrayList<Grocery> getGroceries() {
-    return groceries;
-  }
 
   /**
    * Adds a grocery to the register.
@@ -40,44 +31,17 @@ public class GroceryRegister {
   }
 
   /**
-   * Returns a list of all groceries with the given name.
+   * Returns a grocery with the given name
    *
    * @param name
-   * @return a list of all groceries with the given name
+   * @return a grocery with the given name
    */
-  public ArrayList<Grocery> getGrocery(String name) {
-    ArrayList<Grocery> groceryList = new ArrayList<>();
+  public Grocery getGrocery(String name) {
     for (int i = 0; i < groceries.size(); i++) {
-      if (groceries.get(i).getName().equals(name)) {
-        groceryList.add(groceries.get(i));
+      if (groceries.get(i).name.equals(name)) {
+        return groceries.get(i);
       }
     }
-    return groceryList;
-  }
-
-  /**
-   * Adds an amount to a grocery with the given name and index.
-   *
-   * @param name
-   * @param index
-   * @param amount
-   */
-  public void addAmount(int index, int amount) {
-    groceries.get(index).addAmount(amount);
-  }
-
-  /**
-   * Returns a list of all expired groceries.
-   *
-   * @return a list of all expired groceries
-   */
-  public ArrayList<Grocery> getExpired() {
-    ArrayList<Grocery> expired = new ArrayList<>();
-    for (int i = 0; i < groceries.size(); i++) {
-      if (groceries.get(i).isExpired()) {
-        expired.add(groceries.get(i));
-      }
-    }
-    return expired;
+    return null;
   }
 }
