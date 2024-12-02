@@ -4,13 +4,20 @@ import edu.ntnu.idi.idatt.types.Recipe;
 import java.util.ArrayList;
 
 /**
- * @version 1.1
+ * @version 1.2
  * @since 1.0
  */
 public class RecipeRegister {
   private ArrayList<Recipe> recipies = new ArrayList<>();
 
   public RecipeRegister() {}
+
+  /** Lists all recipes in the register. */
+  public void listRecipes() {
+    for (int i = 0; i < recipies.size(); i++) {
+      System.out.println(recipies.get(i).getFormattedString());
+    }
+  }
 
   /**
    * Adds a recipe to the register.

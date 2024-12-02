@@ -1,10 +1,12 @@
 package edu.ntnu.idi.idatt.models;
 
+import java.util.ArrayList;
+
 import edu.ntnu.idi.idatt.registers.GroceryRegister;
 import edu.ntnu.idi.idatt.types.Grocery;
 
 /**
- * @version 1.5
+ * @version 1.6
  * @since 1.0
  */
 public class FoodStorage {
@@ -12,6 +14,35 @@ public class FoodStorage {
 
   /** Constructor for the FoodStorage class. */
   public FoodStorage() {}
+
+  /**
+   * Returns a grocery in the register.
+   *
+   * @return a grocery in the register
+   */
+  public Grocery getGrocery(String name) {
+    return groceryRegister.getGrocery(name);
+  }
+
+  /** Lists all groceries in the register. */
+  public void listGroceries() {
+    groceryRegister.listGroceries();
+  }
+
+  /**
+   * Lists all expired groceries in the register.
+   *
+   * @return all expired groceries in the register
+   */
+  public void listExpiredGroceries() {
+    ArrayList<Grocery> expiredGroceries = groceryRegister.getExpiredGrocieries();
+    double totalCost = 0;
+    for (Grocery grocery : expiredGroceries) {
+      System.out.println(grocery.getFormattedString());
+      totalCost += grocery.getPrice();
+    }
+    System.out.println("Total cost of expired groceries: " + totalCost);
+  }
 
   /**
    * Adds a grocery to the register. If the grocery already exists, the amount is increased.

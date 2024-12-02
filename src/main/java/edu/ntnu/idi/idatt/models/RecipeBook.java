@@ -24,4 +24,13 @@ public class RecipeBook {
     }
     recipeRegister.addRecipe(recipe);
   }
+
+  /**
+   * Removes a recipe from the register.
+   *
+   * @param recipe
+   */
+  public void listRecipes() {
+    recipeRegister.listRecipes();
+  }
 }

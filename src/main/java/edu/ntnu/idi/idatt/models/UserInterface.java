@@ -8,7 +8,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- * @version 1.5
+ * @version 1.6
  * @since 1.0
  */
 public class UserInterface {
@@ -184,9 +184,9 @@ public class UserInterface {
         break;
 
       case ADD_AMOUNT_TO_GROCERY:
-        int amount = getIntInput("Enter the amount to add: ");
-        String groceryName = getStringInput("Enter the name of the grocery: ");
-        foodStorage.addAmountToGrocery(groceryName, amount);
+        int amountToAdd = getIntInput("Enter the amount to add: ");
+        String groceryNameForAdding = getStringInput("Enter the name of the grocery: ");
+        foodStorage.addAmountToGrocery(groceryNameForAdding, amountToAdd);
         break;
 
       case ADD_RECIPE_TO_RECIPEBOOK:
@@ -194,22 +194,35 @@ public class UserInterface {
         break;
 
       case REMOVE_AMOUNT_FROM_GROCERY:
-        
+        int amountToRemove = getIntInput("Enter the amount to remove: ");
+        String groceryNameForRemoving = getStringInput("Enter the name of the grocery: ");
+        foodStorage.removeAmountFromGrocery(groceryNameForRemoving, amountToRemove);
         break;
 
       case SEARCH_FOR_GROCERY:
+        String groceryName = getStringInput("Enter the name of the grocery: ");
+        Grocery foundGrocery = foodStorage.getGrocery(groceryName);
+        if (foundGrocery != null) {
+          System.out.println("Grocery found: " + foundGrocery.getFormattedString());
+        } else {
+          System.out.println("Grocery not found.");
+        }
         break;
 
       case LIST_GROCERIES:
+        foodStorage.listGroceries();
         break;
 
       case LIST_RECIPES:
+        recipeBook.listRecipes();
         break;
 
       case GET_EXPIRED_GROCERIES:
+        foodStorage.listExpiredGroceries();
         break;
 
       case GET_SORTED_GROCERY_LIST:
+      
         break;
 
       case CHECK_FOODSTORAGE_FOR_AVAILABLE_RECIPIES:
