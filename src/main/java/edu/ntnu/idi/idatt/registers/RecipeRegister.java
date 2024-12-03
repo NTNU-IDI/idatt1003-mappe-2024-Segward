@@ -8,13 +8,7 @@ public class RecipeRegister {
 
   public RecipeRegister() {}
 
-  public void listRecipes() {
-    for (int i = 0; i < recipies.size(); i++) {
-      System.out.println(recipies.get(i).getFormattedString());
-    }
-  }
-
-  public void addRecipe(Recipe recipe) {
+  public void registerRecipe(Recipe recipe) {
     recipies.add(recipe);
   }
 
@@ -22,17 +16,12 @@ public class RecipeRegister {
     recipies.remove(recipe);
   }
 
-  public Recipe getRecipe(String name) {
+  public Recipe searchForRecipe(String name) {
     for (int i = 0; i < recipies.size(); i++) {
-      Recipe recipe = recipies.get(i);
-      if (recipe.name.equals(name)) {
-        return recipe;
+      if (recipies.get(i).name.equals(name)) {
+        return recipies.get(i);
       }
     }
     return null;
   }
-
-
 }
-
-

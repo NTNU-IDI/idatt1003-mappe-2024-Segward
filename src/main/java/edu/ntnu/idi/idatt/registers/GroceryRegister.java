@@ -8,13 +8,7 @@ public class GroceryRegister {
 
   public GroceryRegister() {}
 
-  public void listGroceries() {
-    for (int i = 0; i < groceries.size(); i++) {
-      System.out.println(groceries.get(i).getFormattedString());
-    }
-  }
-
-  public void addGrocery(Grocery grocery) {
+  public void registerGrocery(Grocery grocery) {
     groceries.add(grocery);
   }
 
@@ -32,18 +26,18 @@ public class GroceryRegister {
     groceries.remove(grocery);
   }
 
-  public Grocery getGrocery(String name) {
+  public ArrayList<Grocery> getSortedGroceryList() {
+    ArrayList<Grocery> sortedGroceries = new ArrayList<>(groceries);
+    sortedGroceries.sort((g1, g2) -> g1.name.compareTo(g2.name));
+    return sortedGroceries;
+  }
+
+  public Grocery searchForGrocery(String name) {
     for (int i = 0; i < groceries.size(); i++) {
       if (groceries.get(i).name.equals(name)) {
         return groceries.get(i);
       }
     }
     return null;
-  }
-
-  public ArrayList<Grocery> getSortedGroceryList() {
-    ArrayList<Grocery> sortedGroceries = new ArrayList<>(groceries);
-    sortedGroceries.sort((g1, g2) -> g1.name.compareTo(g2.name));
-    return sortedGroceries;
   }
 }
