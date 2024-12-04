@@ -12,7 +12,7 @@ public class Ingredient {
   }
 
   public String getFormattedString() {
-    return amount + " " + unit + " " + name;
+    return name + " " + amount + " " + unit;
   }
 
   @Override

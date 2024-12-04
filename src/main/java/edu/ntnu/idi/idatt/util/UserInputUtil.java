@@ -100,7 +100,6 @@ public class UserInputUtil {
   public int getUserInputOption() {
     System.out.print(
         """
-        \n
         1. Register grocery
         2. Register recipe
         3. Register cookbook

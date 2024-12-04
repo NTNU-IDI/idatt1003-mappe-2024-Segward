@@ -27,6 +27,6 @@ public class Cookbook {
     for (Recipe recipe : recipes) {
       sb.append(recipe.getFormattedString());
     }
-    return name + "\n" + sb.toString();
+    return "Cookbook: " + name + "\n" + sb.toString();
   }
 }

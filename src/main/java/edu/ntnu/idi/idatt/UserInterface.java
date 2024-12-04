@@ -244,32 +244,37 @@ public class UserInterface {
   }
 
   public void listGroceries() {
+    System.out.println("\nGroceries:\n");
     for (Grocery grocery : groceryRegister.groceries) {
-      System.out.println(grocery.getFormattedString());
+      System.out.println(grocery.getFormattedString() + "\n");
     }
   }
 
   public void listRecipes() {
+    System.out.println("\nRecipes:\n");
     for (Recipe recipe : recipeRegister.recipies) {
-      System.out.println(recipe.getFormattedString());
+      System.out.println(recipe.getFormattedString() + "\n");
     }
   }
 
   public void listCookbooks() {
+    System.out.println("\nCookbooks:\n");
     for (Cookbook cookbook : cookbookRegister.cookbooks) {
-      System.out.println(cookbook.getFormattedString());
+      System.out.println(cookbook.getFormattedString() + "\n");
     }
   }
 
   public void listExpiredGroceries() {
+    System.out.println("\nExpired groceries:\n");
     for (Grocery grocery : groceryRegister.getExpired()) {
-      System.out.println(grocery.getFormattedString());
+      System.out.println(grocery.getFormattedString() + "\n");
     }
   }
 
   public void listSortedGroceries() {
+    System.out.println("\nSorted groceries:\n");
     for (Grocery grocery : groceryRegister.getSorted()) {
-      System.out.println(grocery.getFormattedString());
+      System.out.println(grocery.getFormattedString() + "\n");
     }
   }
 

@@ -19,8 +19,10 @@ public class Recipe {
   public String getFormattedString() {
     StringBuilder sb = new StringBuilder();
     for (Ingredient ingredient : ingredients) {
-      sb.append(ingredient.getFormattedString() + "\n");
+      sb.append("\t-  ").append(ingredient.getFormattedString()).append("\n");
     }
-    return name + "\n" + description + "\n" + sb.toString() + instructions;
+    return String.format(
+        "Recipe: %s\nDescription: %s\nIngredients:\n%sInstructions: %s",
+        name, description, sb.toString(), instructions);
   }
 }
