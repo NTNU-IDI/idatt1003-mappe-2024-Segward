@@ -32,8 +32,9 @@ public class GroceryRegister {
   }
 
   public ArrayList<Grocery> getExpired() {
+    Date currentDate = new Date();
     return groceries.stream()
-        .filter(g -> g.expirationDate.before(new Date()))
+        .filter(g -> g.expirationDate.before(currentDate))
         .collect(Collectors.toCollection(ArrayList::new));
   }
 
