@@ -35,37 +35,65 @@ public class Utils {
 
   public int getInt(String prompt) {
     System.out.print(prompt);
-    while (true) {
-      try {
-        return Integer.parseInt(scanner.nextLine());
-      } catch (NumberFormatException e) {
-        System.out.println("Invalid input. Please enter a valid number.");
-        System.out.print("Enter integer: ");
-      }
+    String input = scanner.nextLine();
+    while (!verifyIntInput(input)) {
+      System.out.println("Invalid input. Please enter a valid number.");
+      System.out.print("Enter integer: ");
+      input = scanner.nextLine();
+    }
+    return Integer.parseInt(input);
+  }
+
+  private boolean verifyIntInput(String input) {
+    try {
+      Integer.parseInt(input);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
     }
   }
 
   public double getDouble(String prompt) {
     System.out.print(prompt);
-    while (true) {
-      try {
-        return Double.parseDouble(scanner.nextLine());
-      } catch (NumberFormatException e) {
-        System.out.println("Invalid input. Please enter a valid number.");
-        System.out.print("Enter double: ");
-      }
+    String input = scanner.nextLine();
+    while (!verifyDoubleInput(input)) {
+      System.out.println("Invalid input. Please enter a valid number.");
+      System.out.print("Enter double: ");
+      input = scanner.nextLine();
+    }
+    return Double.parseDouble(input);
+  }
+
+  private boolean verifyDoubleInput(String input) {
+    try {
+      Double.parseDouble(input);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
     }
   }
 
   public Date getDate(String prompt) {
-    while (true) {
-      System.out.print(prompt);
-      try {
-        return formatter.parse(scanner.nextLine());
-      } catch (Exception e) {
-        System.out.println("Invalid date format.");
-        System.out.print("Enter date (dd/MM/yyyy): ");
-      }
+    System.out.print(prompt);
+    String input = scanner.nextLine();
+    while (!verifyDateInput(input)) {
+      System.out.println("Invalid input. Please enter a valid date.");
+      System.out.print("Enter date (dd/MM/yyyy): ");
+      input = scanner.nextLine();
+    }
+    try {
+      return formatter.parse(input);
+    } catch (Exception e) {
+      return null;
+    }
+  }
+
+  private boolean verifyDateInput(String input) {
+    try {
+      formatter.parse(input);
+      return true;
+    } catch (Exception e) {
+      return false;
     }
   }
 
