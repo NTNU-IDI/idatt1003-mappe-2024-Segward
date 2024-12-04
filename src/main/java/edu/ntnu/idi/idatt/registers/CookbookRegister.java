@@ -7,10 +7,18 @@ public class CookbookRegister {
   public ArrayList<Cookbook> cookbooks = new ArrayList<>();
 
   public void add(Cookbook cookbook) {
+    Cookbook existingCookbook = searchForCookbook(cookbook.name);
+    if (existingCookbook != null) {
+      throw new IllegalArgumentException("Cookbook already exists");
+    }
     cookbooks.add(cookbook);
   }
 
   public void remove(Cookbook cookbook) {
+    Cookbook existingCookbook = searchForCookbook(cookbook.name);
+    if (existingCookbook != null) {
+      throw new IllegalArgumentException("Cookbook doesnt exist");
+    }
     cookbooks.remove(cookbook);
   }
 

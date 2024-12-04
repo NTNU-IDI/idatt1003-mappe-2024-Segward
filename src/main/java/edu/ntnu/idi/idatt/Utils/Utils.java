@@ -1,4 +1,4 @@
-package edu.ntnu.idi.idatt.util;
+package edu.ntnu.idi.idatt.Utils;
 
 import edu.ntnu.idi.idatt.types.Cookbook;
 import edu.ntnu.idi.idatt.types.Grocery;
@@ -6,18 +6,26 @@ import edu.ntnu.idi.idatt.types.Ingredient;
 import edu.ntnu.idi.idatt.types.Recipe;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class UserInputUtil {
+public class Utils {
 
   private static Scanner scanner = new Scanner(System.in);
   private static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+  private Calendar calendar = Calendar.getInstance();
 
   public String getString(String prompt) {
     System.out.print(prompt);
     return scanner.nextLine();
+  }
+
+  public Date getDateDaysFromToday(int days) {
+    calendar.setTime(new Date());
+    calendar.add(Calendar.DATE, days);
+    return calendar.getTime();
   }
 
   public int getInt(String prompt) {
@@ -56,34 +64,35 @@ public class UserInputUtil {
   }
 
   public Grocery getGrocery() {
-    String name = getString("Enter name: ");
-    String unit = getString("Enter unit: ");
-    int amount = getInt("Enter amount: ");
-    double pricePerUnit = getDouble("Enter price per unit: ");
-    Date expirationDate = getDate("Enter expiration date (dd/MM/yyyy): ");
-    return new Grocery(name, unit, amount, pricePerUnit, expirationDate);
+    return new Grocery(
+        getString("Enter name: "),
+        getString("Enter unit: "),
+        getDouble("Enter amount: "),
+        getDouble("Enter price per unit: "),
+        getDate("Enter expiration date (dd/MM/yyyy): "));
   }
 
   public Ingredient getIngredient() {
-    String name = getString("Enter name: ");
-    String unit = getString("Enter unit: ");
-    int amount = getInt("Enter amount: ");
-    return new Ingredient(name, unit, amount);
+    return new Ingredient(
+        getString("Enter name: "), getString("Enter unit: "), getInt("Enter amount: "));
+  }
+
+  public ArrayList<Ingredient> getIngredients() {
+    ArrayList<Ingredient> ingredients = new ArrayList<>();
+    ingredients.add(getIngredient());
+    while (scanner.nextLine().equalsIgnoreCase("y")) {
+      ingredients.add(getIngredient());
+      System.out.print("Add another ingredient? (y/n): ");
+    }
+    return ingredients;
   }
 
   public Recipe getRecipe() {
-    String name = getString("Enter name: ");
-    String description = getString("Enter description: ");
-    String instructions = getString("Enter instructions: ");
-    ArrayList<Ingredient> ingredients = new ArrayList<>();
-    while (true) {
-      ingredients.add(getIngredient());
-      System.out.print("Add another ingredient? (y/n): ");
-      if (!scanner.nextLine().equalsIgnoreCase("y")) {
-        break;
-      }
-    }
-    return new Recipe(name, description, instructions, ingredients);
+    return new Recipe(
+        getString("Enter name: "),
+        getString("Enter description: "),
+        getString("Enter instructions: "),
+        getIngredients());
   }
 
   public Cookbook getCookbook() {
@@ -98,17 +107,18 @@ public class UserInputUtil {
   }
 
   public int getUserInputOption() {
-    System.out.print(
+    System.out.println();
+    System.out.println(
         """
-        1. Register grocery
-        2. Register recipe
-        3. Register cookbook
-        4. Add grocery amount
-        5. Remove grocery amount
-        6. Add recipe to cookbook
-        7. Search for grocery
-        8. List groceries
-        9. List recipes
+        1.  Register grocery
+        2.  Register recipe
+        3.  Register cookbook
+        4.  Add grocery amount
+        5.  Remove grocery amount
+        6.  Add recipe to cookbook
+        7.  Search for grocery
+        8.  List groceries
+        9.  List recipes
         10. List cookbooks
         11. List expired groceries
         12. List sorted groceries

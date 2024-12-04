@@ -7,10 +7,18 @@ public class RecipeRegister {
   public ArrayList<Recipe> recipies = new ArrayList<>();
 
   public void add(Recipe recipe) {
+    Recipe existingRecipe = searchForRecipe(recipe.name);
+    if (existingRecipe != null) {
+      throw new IllegalArgumentException("Recipe already exists");
+    }
     recipies.add(recipe);
   }
 
   public void remove(Recipe recipe) {
+    Recipe existingRecipe = searchForRecipe(recipe.name);
+    if (existingRecipe == null) {
+      throw new IllegalArgumentException("Recipe doesnt exist");
+    }
     recipies.remove(recipe);
   }
 

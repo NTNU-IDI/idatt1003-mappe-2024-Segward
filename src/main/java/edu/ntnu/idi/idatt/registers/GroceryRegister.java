@@ -34,7 +34,7 @@ public class GroceryRegister {
     if (grocery != null) {
       grocery.addAmount(amount);
     } else {
-      System.out.println("Grocery not found");
+      throw new IllegalArgumentException("Grocery not found");
     }
     if (grocery.amount <= 0) {
       remove(grocery);
@@ -46,7 +46,7 @@ public class GroceryRegister {
     if (grocery != null) {
       grocery.removeAmount(amount);
     } else {
-      System.out.println("Grocery not found");
+      throw new IllegalArgumentException("Grocery not found");
     }
     if (grocery.amount <= 0) {
       remove(grocery);
