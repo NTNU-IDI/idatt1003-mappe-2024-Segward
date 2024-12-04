@@ -9,17 +9,10 @@ import org.junit.jupiter.api.Test;
 public class GroceryTest {
 
   @Test
-  public void testAddAmountPositive() {
+  public void testSetAmountPositive() {
     Grocery grocery = new Grocery("Test", "kg", 1, 1, null);
-    grocery.addAmount(1);
+    grocery.setAmount(2);
     assertEquals(2, grocery.amount, "The amount should be 2 after adding 1.");
-  }
-
-  @Test
-  public void testRemoveAmountPositive() {
-    Grocery grocery = new Grocery("Test", "kg", 2, 1, null);
-    grocery.removeAmount(1);
-    assertEquals(1, grocery.amount, "The amount should be 1 after removing 1.");
   }
 
   @Test
@@ -27,7 +20,7 @@ public class GroceryTest {
     Date currentDate = new Date();
     Date expirationDate = new Date(currentDate.getTime() - 1000);
     Grocery grocery = new Grocery("Test", "kg", 1, 1, expirationDate);
-    assertTrue(grocery.isExpired(), "The grocery should be expired.");
+    assertTrue(grocery.expirationDate.before(currentDate), "The grocery should be expired.");
   }
 
   @Test
@@ -56,17 +49,10 @@ public class GroceryTest {
   }
 
   @Test
-  public void testAddAmountNegative() {
+  public void testSetAmountNegative() {
     Grocery grocery = new Grocery("Test", "kg", 1, 1, null);
-    grocery.addAmount(100);
+    grocery.setAmount(5);
     assertEquals(2, grocery.amount, "The amount should be 2 after adding 1.");
-  }
-
-  @Test
-  public void testRemoveAmountNegative() {
-    Grocery grocery = new Grocery("Test", "kg", 10, 1, null);
-    grocery.removeAmount(1);
-    assertEquals(1, grocery.amount, "The amount should be 1 after removing 1.");
   }
 
   @Test
@@ -74,7 +60,7 @@ public class GroceryTest {
     Date currentDate = new Date();
     Date expirationDate = new Date(currentDate.getTime() + 1000);
     Grocery grocery = new Grocery("Test", "kg", 1, 1, expirationDate);
-    assertTrue(grocery.isExpired(), "The grocery should be expired.");
+    assertTrue(grocery.expirationDate.before(currentDate), "The grocery should be expired.");
   }
 
   @Test

@@ -3,7 +3,6 @@ package edu.ntnu.idi.idatt.types;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
-
 import org.junit.jupiter.api.Test;
 
 public class CookbookTest {

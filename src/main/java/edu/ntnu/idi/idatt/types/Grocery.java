@@ -18,17 +18,8 @@ public class Grocery {
     this.expirationDate = expirationDate;
   }
 
-  public void addAmount(double amount) {
-    this.amount += amount;
-  }
-
-  public void removeAmount(double amount) {
-    this.amount -= amount;
-  }
-
-  public boolean isExpired() {
-    Date currentDate = new Date();
-    return expirationDate.before(currentDate);
+  public void setAmount(double amount) {
+    this.amount = amount;
   }
 
   public double getPrice() {

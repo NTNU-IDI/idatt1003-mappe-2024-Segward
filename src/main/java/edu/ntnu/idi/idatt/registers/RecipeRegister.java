@@ -2,32 +2,31 @@ package edu.ntnu.idi.idatt.registers;
 
 import edu.ntnu.idi.idatt.types.Recipe;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class RecipeRegister {
   public ArrayList<Recipe> recipies = new ArrayList<>();
 
   public void add(Recipe recipe) {
-    Recipe existingRecipe = searchForRecipe(recipe.name);
+    Recipe existingRecipe = find(recipe.name);
     if (existingRecipe != null) {
       throw new IllegalArgumentException("Recipe already exists");
+    } else {
+      recipies.add(recipe);
     }
-    recipies.add(recipe);
   }
 
   public void remove(Recipe recipe) {
-    Recipe existingRecipe = searchForRecipe(recipe.name);
+    Recipe existingRecipe = find(recipe.name);
     if (existingRecipe == null) {
       throw new IllegalArgumentException("Recipe doesnt exist");
+    } else {
+      recipies.remove(recipe);
     }
-    recipies.remove(recipe);
   }
 
-  public Recipe searchForRecipe(String name) {
-    for (int i = 0; i < recipies.size(); i++) {
-      if (recipies.get(i).name.equals(name)) {
-        return recipies.get(i);
-      }
-    }
-    return null;
+  public Recipe find(String name) {
+    Optional<Recipe> recipie = recipies.stream().filter(r -> r.name.equals(name)).findFirst();
+    return recipie.orElse(null);
   }
 }

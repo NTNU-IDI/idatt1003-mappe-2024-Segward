@@ -1,13 +1,15 @@
 package edu.ntnu.idi.idatt.registers;
 
 import edu.ntnu.idi.idatt.types.Cookbook;
+
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class CookbookRegister {
   public ArrayList<Cookbook> cookbooks = new ArrayList<>();
 
   public void add(Cookbook cookbook) {
-    Cookbook existingCookbook = searchForCookbook(cookbook.name);
+    Cookbook existingCookbook = find(cookbook.name);
     if (existingCookbook != null) {
       throw new IllegalArgumentException("Cookbook already exists");
     }
@@ -15,19 +17,16 @@ public class CookbookRegister {
   }
 
   public void remove(Cookbook cookbook) {
-    Cookbook existingCookbook = searchForCookbook(cookbook.name);
+    Cookbook existingCookbook = find(cookbook.name);
     if (existingCookbook != null) {
       throw new IllegalArgumentException("Cookbook doesnt exist");
     }
     cookbooks.remove(cookbook);
   }
 
-  public Cookbook searchForCookbook(String name) {
-    for (int i = 0; i < cookbooks.size(); i++) {
-      if (cookbooks.get(i).name.equals(name)) {
-        return cookbooks.get(i);
-      }
-    }
-    return null;
+  public Cookbook find(String name) {
+    Optional<Cookbook> cookbook = cookbooks.stream().filter(c -> c.name.equals(name)).findFirst();
+    return cookbook.orElse(null);
   }
+  
 }

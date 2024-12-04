@@ -182,52 +182,52 @@ public class UserInterface {
   public void addGroceryAmount() {
     String name = utils.getString("Enter grocery name: ");
     double amount = utils.getDouble("Enter amount to add: ");
-    try {
-      groceryRegister.addAmount(name, amount);
-      System.out.println("Grocery amount successfully added");
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
+    Grocery grocery = groceryRegister.find(name);
+    if (grocery == null) {
+      System.out.println("Grocery not found");
+      return;
+    }
+    grocery.setAmount(grocery.amount + amount);
+    if (grocery.amount <= 0) {
+      groceryRegister.remove(grocery);
     }
   }
 
   public void removeGroceryAmount() {
     String name = utils.getString("Enter grocery name: ");
     double amount = utils.getDouble("Enter amount to remove: ");
-    try {
-      groceryRegister.removeAmount(name, amount);
-      System.out.println("Grocery amount successfully removed");
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
+    Grocery grocery = groceryRegister.find(name);
+    if (grocery == null) {
+      System.out.println("Grocery not found");
+      return;
+    }
+    grocery.setAmount(grocery.amount - amount);
+    if (grocery.amount <= 0) {
+      groceryRegister.remove(grocery);
     }
   }
 
   public void addRecipeToCookbook() {
-    try {
-      Cookbook cookbook =
-          cookbookRegister.searchForCookbook(utils.getString("Enter cookbook name: "));
-      if (cookbook == null) {
-        throw new Exception("Cookbook not found");
-      }
-      Recipe recipe = recipeRegister.searchForRecipe(utils.getString("Enter recipe name: "));
-      if (recipe == null) {
-        throw new Exception("Recipe not found");
-      }
-      cookbook.addRecipe(recipe);
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
+    Cookbook cookbook = cookbookRegister.find(utils.getString("Enter cookbook name: "));
+    if (cookbook == null) {
+      System.out.println("Cookbook not found");
+      return;
     }
+    Recipe recipe = recipeRegister.find(utils.getString("Enter recipe name: "));
+    if (recipe == null) {
+      System.out.println("Cookbook not found");
+      return;
+    }
+    cookbook.addRecipe(recipe);
   }
 
   public void searchForGrocery() {
-    try {
-      String name = utils.getString("Enter grocery name: ");
-      Grocery grocery = groceryRegister.searchForGrocery(name);
-      if (grocery == null) {
-        throw new Exception("Grocery not found");
-      }
-      System.out.println("Found grocery:\n" + grocery.getFormattedString() + "\n");
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
+    String name = utils.getString("Enter grocery name: ");
+    Grocery grocery = groceryRegister.find(name);
+    if (grocery == null) {
+      System.out.println("Grocery not found");
+    } else {
+      System.out.println(grocery.getFormattedString());
     }
   }
 
@@ -262,50 +262,39 @@ public class UserInterface {
   }
 
   public void suggestCookbookRecipies() {
-    try {
-      Cookbook cookbook =
-          cookbookRegister.searchForCookbook(utils.getString("Enter cookbook name: "));
-      if (cookbook == null) {
-        throw new Exception("Cookbook not found");
+    Cookbook cookbook = cookbookRegister.find(utils.getString("Enter cookbook name: "));
+    if (cookbook == null) {
+      System.out.println("Cookbook not found");
+      return;
+    }
+    for (Recipe recipe : cookbook.recipes) {
+      if (groceryRegister.hasSufficientIngredients(recipe.ingredients)) {
+        System.out.println(recipe.getFormattedString());
+      } else {
+        System.out.println("Missing ingredients for recipe: " + recipe.name);
       }
-      for (Recipe recipe : cookbook.recipes) {
-        if (groceryRegister.containsRecipe(recipe)) {
-          System.out.println(recipe.getFormattedString());
-        } else {
-          System.out.println("Missing ingredients for recipe: " + recipe.name);
-        }
-      }
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
     }
   }
 
   public void checkRecipeIngredients() {
-    try {
-      String recipeName = utils.getString("Enter recipe name: ");
-      Recipe recipe = recipeRegister.searchForRecipe(recipeName);
-      if (recipe == null) {
-        throw new Exception("Recipe not found");
-      }
-      boolean containsAllIngredients = groceryRegister.containsRecipe(recipe);
-      if (containsAllIngredients) {
-        System.out.println("All ingredients are available");
-      } else {
-        System.out.println("Missing ingredients");
-      }
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
+    String recipeName = utils.getString("Enter recipe name: ");
+    Recipe recipe = recipeRegister.find(recipeName);
+    if (recipe == null) {
+      System.out.println("Recipe not found");
+      return;
+    }
+    boolean containsAllIngredients = groceryRegister.hasSufficientIngredients(recipe.ingredients);
+    if (containsAllIngredients) {
+      System.out.println("All ingredients are available");
+    } else {
+      System.out.println("Missing ingredients");
     }
   }
 
   public void listGroceriesBeforeDate() {
-    try {
-      Date date = utils.getDate("Enter date (dd/MM/yyyy): ");
-      for (Grocery grocery : groceryRegister.getGroceriesBeforeDate(date)) {
-        System.out.println(grocery.getFormattedString());
-      }
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
+    Date date = utils.getDate("Enter date (dd/MM/yyyy): ");
+    for (Grocery grocery : groceryRegister.getGroceriesBeforeDate(date)) {
+      System.out.println(grocery.getFormattedString());
     }
   }
 }
