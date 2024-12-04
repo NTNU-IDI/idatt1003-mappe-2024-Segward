@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 public class Utils {
@@ -98,12 +97,6 @@ public class Utils {
   public Cookbook getCookbook() {
     String name = getString("Enter name: ");
     return new Cookbook(name);
-  }
-
-  public ArrayList<String> getSeperatedString(String prompt) {
-    System.out.print(prompt);
-    String input = scanner.nextLine();
-    return new ArrayList<>(List.of(input.replace(" ", "").split(",")));
   }
 
   public int getUserInputOption() {

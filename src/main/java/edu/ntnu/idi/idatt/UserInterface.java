@@ -200,20 +200,11 @@ public class UserInterface {
       if (cookbook == null) {
         throw new Exception("Cookbook not found");
       }
-      ArrayList<String> recipies =
-          utils.getSeperatedString("Enter recipe names seperated by comma (,): ");
-      for (String recipeName : recipies) {
-        try {
-          Recipe recipe = recipeRegister.searchForRecipe(recipeName);
-          if (recipe != null) {
-            cookbook.addRecipe(recipe);
-          } else {
-            throw new Exception("Recipe not found");
-          }
-        } catch (Exception e) {
-          System.out.println(e.getMessage());
-        }
+      Recipe recipe = recipeRegister.searchForRecipe(utils.getString("Enter recipe name: "));
+      if (recipe == null) {
+        throw new Exception("Recipe not found");
       }
+      cookbook.addRecipe(recipe);
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
