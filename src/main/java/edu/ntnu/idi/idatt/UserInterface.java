@@ -232,53 +232,71 @@ public class UserInterface {
   }
 
   public void listGroceries() {
-    for (Grocery grocery : groceryRegister.groceries) {
-      System.out.println("\n" + grocery.getFormattedString());
-    }
+    groceryRegister.groceries.forEach(g -> System.out.println(g.getFormattedString()));
   }
 
   public void listRecipes() {
-    for (Recipe recipe : recipeRegister.recipies) {
-      System.out.println("\n" + recipe.getFormattedString());
-    }
+    recipeRegister.recipies.forEach(r -> System.out.println(r.getFormattedString()));
   }
 
   public void listCookbooks() {
-    for (Cookbook cookbook : cookbookRegister.cookbooks) {
-      System.out.println("\n" + cookbook.getFormattedString());
-    }
+    cookbookRegister.cookbooks.forEach(c -> System.out.println(c.getFormattedString()));
   }
 
   public void listExpiredGroceries() {
-    for (Grocery grocery : groceryRegister.getExpired()) {
-      System.out.println("\n" + grocery.getFormattedString());
+    ArrayList<Grocery> expiredGroceries = groceryRegister.getExpired();
+    if (expiredGroceries.isEmpty()) {
+      System.out.println("No expired groceries");
+      return;
     }
+    double totalCost = 0;
+    for (Grocery grocery : expiredGroceries) {
+      System.out.println(grocery.getFormattedString());
+      totalCost += grocery.getPrice();
+    }
+    System.out.println("Total cost of expired groceries: " + totalCost);
   }
 
   public void listSortedGroceries() {
-    for (Grocery grocery : groceryRegister.getSorted()) {
-      System.out.println("\n" + grocery.getFormattedString());
-    }
+    groceryRegister.getSorted().forEach(g -> System.out.println(g.getFormattedString()));
   }
 
   public void suggestCookbookRecipies() {
-    Cookbook cookbook = cookbookRegister.find(utils.getString("Enter cookbook name: "));
-    if (cookbook == null) {
-      System.out.println("Cookbook not found");
+    if (groceryRegister.groceries.isEmpty()) {
+      System.out.println("No groceries available");
       return;
     }
+    if (cookbookRegister.cookbooks.isEmpty()) {
+      System.out.println("No cookbooks available");
+      return;
+    }
+    cookbookRegister.cookbooks.forEach(this::suggestRecipies);
+  }
+
+  public void suggestRecipies(Cookbook cookbook) {
+    boolean containsAtleastOneRecipe = false;
     for (Recipe recipe : cookbook.recipes) {
-      if (groceryRegister.hasSufficientIngredients(recipe.ingredients)) {
+      boolean containsAllIngredients = groceryRegister.hasSufficientIngredients(recipe.ingredients);
+      if (containsAllIngredients) {
         System.out.println(recipe.getFormattedString());
-      } else {
-        System.out.println("Missing ingredients for recipe: " + recipe.name);
+        containsAtleastOneRecipe = true;
       }
+    }
+    if (!containsAtleastOneRecipe) {
+      System.out.println("No recipes available for " + cookbook.name);
     }
   }
 
   public void checkRecipeIngredients() {
-    String recipeName = utils.getString("Enter recipe name: ");
-    Recipe recipe = recipeRegister.find(recipeName);
+    if (groceryRegister.groceries.isEmpty()) {
+      System.out.println("No groceries available");
+      return;
+    }
+    if (recipeRegister.recipies.isEmpty()) {
+      System.out.println("No recipes available");
+      return;
+    }
+    Recipe recipe = recipeRegister.find(utils.getString("Enter recipe name: "));
     if (recipe == null) {
       System.out.println("Recipe not found");
       return;
