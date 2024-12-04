@@ -1,6 +1,4 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/INcAwgxk)
 # Semester prosjekt IDATT1004
-This file uses Mark Down syntax. For more information see [here](https://www.markdownguide.org/basic-syntax/).
 
 [//]: # (TODO: Fill inn your name and student ID)
 
@@ -11,11 +9,13 @@ STUDENT ID = `119656`
 
 [//]: # (TODO: Write a short description of your project/product here.)
 
-This project is really epic.
+In this project we had to make a grocery storage system where you could register, remove, list groceries and more. We also had to implement recipies and cooking books. The enduser should be able to check what they had in storage and what they could make with the ingredients they had. The project had to be made in Java with a maven project structure. Furthermore we had to implement full JUnit testing and JavaDoc documentation.
 
 ## Project structure
 
 [//]: # (TODO: Describe the structure of your project here. How have you used packages in your structure. Where are all sourcefiles stored. Where are all JUnit-test classes stored. etc.)
+
+The source code can be found in `src/main/java/edu/ntnu/idi/idatt` and the JUnit-test classes can be found in `src/test/java/edu/ntnu/idi/idatt`
 
 ## Link to repository
 
@@ -28,11 +28,12 @@ The repository can be found [here](https://github.com/NTNU-IDI/idatt1003-mappe-2
 [//]: # (TODO: Describe how to run your project here. What is the main class? What is the main method?
 What is the input and output of the program? What is the expected behaviour of the program?)
 
+The main class can be found at `src/main/java/edu/ntnu/idi/idatt/Kitchen.java`. It creates a UserInterface object and calls the initiate method and start method. 
+
 ## How to run the tests
 
 [//]: # (TODO: Describe how to run the tests here.)
 To run tests you need to use maven with the command `mvn test`. <br />
-The project uses junit jupiter with maven.
 
 ## References
 

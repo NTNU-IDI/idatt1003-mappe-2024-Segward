@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class Grocery {
   public String name;
-  private String unit;
   public double amount;
-  private double pricePerUnit;
   public Date expirationDate;
+  private String unit;
+  private double pricePerUnit;
 
   public Grocery(
       String name, String unit, double amount, double pricePerUnit, Date expirationDate) {

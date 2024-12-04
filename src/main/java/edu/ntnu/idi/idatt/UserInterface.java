@@ -21,9 +21,9 @@ public class UserInterface {
   private final int LIST_EXPIRED_GROCERIES = 11;
   private final int LIST_SORTED_GROCERIES = 12;
   private final int LIST_GROCERIES_BEFORE_DATE = 13;
-  private final int SUGGEST_COOKBOOK_RECIPIES = 14;
-  private final int CHECK_RECIPIE_INGREDIENTS = 15;
-  private final int EXIT = 16;
+  private final int SUGGEST_COOKBOOK_RECIPIES = 15;
+  private final int CHECK_RECIPIE_INGREDIENTS = 16;
+  private final int EXIT = 17;
   private UserInputUtil userInputUtil = new UserInputUtil();
   private DateUtil dateUtil = new DateUtil();
   private GroceryRegister groceryRegister = new GroceryRegister();

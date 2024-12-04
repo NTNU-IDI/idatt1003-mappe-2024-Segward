@@ -101,21 +101,21 @@ public class UserInputUtil {
     System.out.print(
         """
         \n
-        1.  Register Grocery
-        2.  Register Recipe
-        3.  Register Cookbook
-        4.  Add Grocery Amount
-        5.  Remove Grocery Amount
-        6.  Add Recipe to Cookbook
-        7.  Search for Grocery
-        8.  List Groceries
-        9.  List Recipes
-        10. List Cookbooks
-        11. List Expired Groceries
-        12. List Sorted Groceries
-        13. List Available Recipes
-        14. Check Recipe Groceries
-        15. List Expired Groceries Before Given Date
+        1. Register grocery
+        2. Register recipe
+        3. Register cookbook
+        4. Add grocery amount
+        5. Remove grocery amount
+        6. Add recipe to cookbook
+        7. Search for grocery
+        8. List groceries
+        9. List recipes
+        10. List cookbooks
+        11. List expired groceries
+        12. List sorted groceries
+        13. List groceries before date
+        14. Suggest cookbook recipes
+        15. Check recipe ingredients
         16. Exit
         """);
     return getInt("Enter choice: ");
