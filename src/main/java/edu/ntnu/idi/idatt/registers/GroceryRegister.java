@@ -10,8 +10,7 @@ public class GroceryRegister {
   public ArrayList<Grocery> groceries = new ArrayList<>();
 
   public Grocery find(String name) {
-    Optional<Grocery> grocery = groceries.stream().filter(g -> g.name.equals(name)).findFirst();
-    return grocery.orElse(null);
+    return groceries.stream().filter(g -> g.name.equals(name)).findFirst().orElse(null);
   }
 
   public void add(Grocery grocery) {

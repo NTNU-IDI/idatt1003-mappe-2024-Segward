@@ -26,7 +26,6 @@ public class RecipeRegister {
   }
 
   public Recipe find(String name) {
-    Optional<Recipe> recipie = recipies.stream().filter(r -> r.name.equals(name)).findFirst();
-    return recipie.orElse(null);
+    return recipies.stream().filter(r -> r.name.equals(name)).findFirst().orElse(null);
   }
 }

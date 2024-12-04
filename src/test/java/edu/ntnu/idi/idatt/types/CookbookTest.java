@@ -12,7 +12,7 @@ public class CookbookTest {
     Cookbook cookbook = new Cookbook("Test");
     ArrayList<Ingredient> ingredients = new ArrayList<>();
     Recipe recipe = new Recipe("Test", "Test", "Test", ingredients);
-    cookbook.addRecipe(recipe);
+    cookbook.add(recipe);
     assertEquals(1, cookbook.recipes.size(), "The size of the recipes list should be 1.");
   }
 
@@ -21,8 +21,8 @@ public class CookbookTest {
     Cookbook cookbook = new Cookbook("Test");
     ArrayList<Ingredient> ingredients = new ArrayList<>();
     Recipe recipe = new Recipe("Test", "Test", "Test", ingredients);
-    cookbook.addRecipe(recipe);
-    assertEquals(recipe, cookbook.searchForRecipe("Test"), "The recipe should be found.");
+    cookbook.add(recipe);
+    assertEquals(recipe, cookbook.find("Test"), "The recipe should be found.");
   }
 
   @Test
@@ -30,7 +30,7 @@ public class CookbookTest {
     Cookbook cookbook = new Cookbook("Test");
     ArrayList<Ingredient> ingredients = new ArrayList<>();
     Recipe recipe = new Recipe("Test", "Test", "Test", ingredients);
-    cookbook.addRecipe(recipe);
+    cookbook.add(recipe);
     assertEquals(
         "Cookbook: Test\n\nRecipe: Test\nDescription: Test\nIngredients:\nInstructions: Test\n",
         cookbook.getFormattedString(),
@@ -47,7 +47,7 @@ public class CookbookTest {
     Cookbook cookbook = new Cookbook("Test");
     ArrayList<Ingredient> ingredients = new ArrayList<>();
     Recipe recipe = new Recipe("Test", "Test", "Test", ingredients);
-    cookbook.addRecipe(recipe);
+    cookbook.add(recipe);
     assertEquals(1, cookbook.recipes.size(), "The size of the recipes list should be 1.");
   }
 
@@ -56,8 +56,8 @@ public class CookbookTest {
     Cookbook cookbook = new Cookbook("Test");
     ArrayList<Ingredient> ingredients = new ArrayList<>();
     Recipe recipe = new Recipe("Test", "Test", "Test", ingredients);
-    cookbook.addRecipe(recipe);
-    assertEquals(recipe, cookbook.searchForRecipe("Test"), "The recipe should be found.");
+    cookbook.add(recipe);
+    assertEquals(recipe, cookbook.find("Test"), "The recipe should be found.");
   }
 
   @Test
@@ -65,7 +65,7 @@ public class CookbookTest {
     Cookbook cookbook = new Cookbook("Test");
     ArrayList<Ingredient> ingredients = new ArrayList<>();
     Recipe recipe = new Recipe("Test", "Test", "Test", ingredients);
-    cookbook.addRecipe(recipe);
+    cookbook.add(recipe);
     assertEquals(
         "Cookbook: Test\n\nRecipe: Test\nDescription: Test\nIngredients:\nInstructions: Test\n",
         cookbook.getFormattedString(),

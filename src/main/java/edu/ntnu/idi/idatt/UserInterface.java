@@ -141,9 +141,9 @@ public class UserInterface {
   private void addSampleCookbooks() {
     Cookbook cookbook1 = new Cookbook("Breakfast");
     Cookbook cookbook2 = new Cookbook("Dessert");
-    cookbook1.addRecipe(recipeRegister.find("Pancake"));
-    cookbook1.addRecipe(recipeRegister.find("Waffle"));
-    cookbook2.addRecipe(recipeRegister.find("Cake"));
+    cookbook1.add(recipeRegister.find("Pancake"));
+    cookbook1.add(recipeRegister.find("Waffle"));
+    cookbook2.add(recipeRegister.find("Cake"));
     cookbookRegister.add(cookbook1);
     cookbookRegister.add(cookbook2);
   }
@@ -217,7 +217,7 @@ public class UserInterface {
       System.out.println("Cookbook not found");
       return;
     }
-    cookbook.addRecipe(recipe);
+    cookbook.add(recipe);
   }
 
   public void searchForGrocery() {

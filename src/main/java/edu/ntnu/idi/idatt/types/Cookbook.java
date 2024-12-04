@@ -10,21 +10,16 @@ public class Cookbook {
     this.name = name;
   }
 
-  public void addRecipe(Recipe recipe) {
-    Recipe existingRecipe = searchForRecipe(recipe.name);
+  public Recipe find(String name) {
+    return recipes.stream().filter(r -> r.name.equals(name)).findFirst().orElse(null);
+  }
+
+  public void add(Recipe recipe) {
+    Recipe existingRecipe = find(recipe.name);
     if (existingRecipe != null) {
       throw new IllegalArgumentException("Recipe already exists");
     }
     recipes.add(recipe);
-  }
-
-  public Recipe searchForRecipe(String name) {
-    for (int i = 0; i < recipes.size(); i++) {
-      if (recipes.get(i).name.equals(name)) {
-        return recipes.get(i);
-      }
-    }
-    return null;
   }
 
   public String getFormattedString() {

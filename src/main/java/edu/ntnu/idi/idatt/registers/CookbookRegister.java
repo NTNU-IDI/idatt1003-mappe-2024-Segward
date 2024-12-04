@@ -1,9 +1,7 @@
 package edu.ntnu.idi.idatt.registers;
 
 import edu.ntnu.idi.idatt.types.Cookbook;
-
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class CookbookRegister {
   public ArrayList<Cookbook> cookbooks = new ArrayList<>();
@@ -25,8 +23,6 @@ public class CookbookRegister {
   }
 
   public Cookbook find(String name) {
-    Optional<Cookbook> cookbook = cookbooks.stream().filter(c -> c.name.equals(name)).findFirst();
-    return cookbook.orElse(null);
+    return cookbooks.stream().filter(c -> c.name.equals(name)).findFirst().orElse(null);
   }
-  
 }
