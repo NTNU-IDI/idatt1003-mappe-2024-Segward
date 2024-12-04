@@ -39,16 +39,6 @@ public class GroceryTest {
   }
 
   @Test
-  public void testToStringPositive() {
-    Date expirationDate = new Date();
-    Grocery grocery = new Grocery("Test", "kg", 1, 1, expirationDate);
-    assertEquals(
-        "Test, kg, 1.0, 1.0, " + expirationDate,
-        grocery.toString(),
-        "The string should be 'Test, kg, 1.0, 1.0, " + expirationDate + "'.");
-  }
-
-  @Test
   public void testSetAmountNegative() {
     Grocery grocery = new Grocery("Test", "kg", 1, 1, null);
     grocery.setAmount(5);
@@ -76,15 +66,5 @@ public class GroceryTest {
         "Test 1.0 kg",
         grocery.getFormattedString(),
         "The formatted string should be 'Test 1.0 kg'.");
-  }
-
-  @Test
-  public void testToStringNegative() {
-    Date expirationDate = new Date();
-    Grocery grocery = new Grocery("Test", "kg", 5, 1, expirationDate);
-    assertEquals(
-        "Test, kg, 1.0, 1.0, " + expirationDate,
-        grocery.toString(),
-        "The string should be 'Test, kg, 1.0, 1.0, " + expirationDate + "'.");
   }
 }

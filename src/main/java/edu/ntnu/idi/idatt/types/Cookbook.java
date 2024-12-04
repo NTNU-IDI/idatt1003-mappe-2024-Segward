@@ -30,21 +30,8 @@ public class Cookbook {
   public String getFormattedString() {
     StringBuilder sb = new StringBuilder();
     for (Recipe recipe : recipes) {
-      sb.append("\n" + recipe.getFormattedString() + "\n");
+      sb.append(recipe.getFormattedString());
     }
-    return "Cookbook: " + name + sb.toString();
-  }
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < recipes.size(); i++) {
-      if (i == recipes.size() - 1) {
-        sb.append(recipes.get(i).toString());
-      } else {
-        sb.append(recipes.get(i).toString()).append(", ");
-      }
-    }
-    return name + ", " + sb.toString();
+    return "Cookbook: " + name + "\n" + sb.toString();
   }
 }

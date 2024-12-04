@@ -43,15 +43,6 @@ public class CookbookTest {
   }
 
   @Test
-  public void testToStringPositive() {
-    Cookbook cookbook = new Cookbook("Test");
-    ArrayList<Ingredient> ingredients = new ArrayList<>();
-    Recipe recipe = new Recipe("Test", "Test", "Test", ingredients);
-    cookbook.addRecipe(recipe);
-    assertEquals("Test, Test", cookbook.toString(), "The string should be 'Test, Test'.");
-  }
-
-  @Test
   public void testAddRecipeNegative() {
     Cookbook cookbook = new Cookbook("Test");
     ArrayList<Ingredient> ingredients = new ArrayList<>();
@@ -84,14 +75,5 @@ public class CookbookTest {
             + "Ingredients:\n"
             + "Instructions: Test\n"
             + "'.");
-  }
-
-  @Test
-  public void testToStringNegative() {
-    Cookbook cookbook = new Cookbook("Test");
-    ArrayList<Ingredient> ingredients = new ArrayList<>();
-    Recipe recipe = new Recipe("Test", "Test", "Test", ingredients);
-    cookbook.addRecipe(recipe);
-    assertEquals("Test, Test", cookbook.toString(), "The string should be 'Test, Test'.");
   }
 }
