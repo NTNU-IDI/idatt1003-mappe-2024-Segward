@@ -6,20 +6,12 @@ import java.util.ArrayList;
 public class CookbookRegister {
   public ArrayList<Cookbook> cookbooks = new ArrayList<>();
 
-  public CookbookRegister() {}
-
   public void add(Cookbook cookbook) {
     cookbooks.add(cookbook);
   }
 
   public void remove(Cookbook cookbook) {
     cookbooks.remove(cookbook);
-  }
-
-  public void list() {
-    for (int i = 0; i < cookbooks.size(); i++) {
-      System.out.println(cookbooks.get(i).getFormattedString());
-    }
   }
 
   public Cookbook searchForCookbook(String name) {

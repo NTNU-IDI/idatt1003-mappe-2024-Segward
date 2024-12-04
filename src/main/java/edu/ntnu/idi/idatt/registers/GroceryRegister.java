@@ -1,16 +1,11 @@
 package edu.ntnu.idi.idatt.registers;
 
-import edu.ntnu.idi.idatt.types.Cookbook;
-import edu.ntnu.idi.idatt.types.Grocery;
-import edu.ntnu.idi.idatt.types.Recipe;
-import edu.ntnu.idi.idatt.types.Ingredient;
+import edu.ntnu.idi.idatt.types.*;
 import java.util.ArrayList;
 import java.util.Date;
 
 public class GroceryRegister {
   public ArrayList<Grocery> groceries = new ArrayList<>();
-
-  public GroceryRegister() {}
 
   public Grocery searchForGrocery(String name) {
     for (int i = 0; i < groceries.size(); i++) {
@@ -58,12 +53,6 @@ public class GroceryRegister {
     }
   }
 
-  public void list() {
-    for (Grocery grocery : groceries) {
-      System.out.println(grocery.getFormattedString());
-    }
-  }
-
   public ArrayList<Grocery> getExpired() {
     ArrayList<Grocery> expiredGroceries = new ArrayList<>();
     for (int i = 0; i < groceries.size(); i++) {
@@ -74,34 +63,20 @@ public class GroceryRegister {
     return expiredGroceries;
   }
 
-  public void listExpired() {
-    ArrayList<Grocery> expiredGroceries = getExpired();
-    double totalCost = 0;
-    for (Grocery grocery : expiredGroceries) {
-      System.out.println(grocery.getFormattedString());
-      totalCost += grocery.getPrice();
-    }
-    System.out.println("Total cost of expired groceries: " + totalCost);
-  }
-
-  public void listExpiredBeforeDate(Date date) {
-    ArrayList<Grocery> expiredGroceries = getExpired();
-    double totalCost = 0;
-    for (Grocery grocery : expiredGroceries) {
-      if (grocery.expirationDate.before(date)) {
-        System.out.println(grocery.getFormattedString());
-        totalCost += grocery.getPrice();
+  public ArrayList<Grocery> getGroceriesBeforeDate(Date date) {
+    ArrayList<Grocery> groceriesBeforeDate = new ArrayList<>();
+    for (int i = 0; i < groceries.size(); i++) {
+      if (groceries.get(i).expirationDate.before(date)) {
+        groceriesBeforeDate.add(groceries.get(i));
       }
     }
-    System.out.println("Total cost of expired groceries: " + totalCost);
+    return groceriesBeforeDate;
   }
 
-  public void listSorted() {
+  public ArrayList<Grocery> getSorted() {
     ArrayList<Grocery> sortedGroceries = new ArrayList<>(groceries);
     sortedGroceries.sort((g1, g2) -> g1.name.compareTo(g2.name));
-    for (Grocery grocery : sortedGroceries) {
-      System.out.println(grocery.getFormattedString());
-    }
+    return sortedGroceries;
   }
 
   public void containsRecipe(Recipe recipe) {

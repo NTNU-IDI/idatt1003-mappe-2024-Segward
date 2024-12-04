@@ -21,8 +21,8 @@ public class UserInterface {
   private final int LIST_EXPIRED_GROCERIES = 11;
   private final int LIST_SORTED_GROCERIES = 12;
   private final int LIST_AVAILABLE_RECIPIES = 13;
-  private final int CHECK_RECIPE_GROCERIES = 14;
-  private final int LIST_EXPIRED_GROCERIES_BEFORE_GIVEN_DATE = 15;
+  private final int LIST_GROCERIES_BEFORE_DATE = 14;
+  private final int CHECK_RECIPE_GROCERIES = 15;
   private final int EXIT = 16;
   private UserInputUtil userInputUtil = new UserInputUtil();
   private DateUtil dateUtil = new DateUtil();
@@ -143,8 +143,8 @@ public class UserInterface {
           checkRecipeGroceries();
           break;
 
-        case LIST_EXPIRED_GROCERIES_BEFORE_GIVEN_DATE:
-          listExpiredGroceriesBeforeGivenDate();
+        case LIST_GROCERIES_BEFORE_DATE:
+          listGroceriesBeforeDate();
           break;
 
         case EXIT:
@@ -244,23 +244,33 @@ public class UserInterface {
   }
 
   public void listGroceries() {
-    groceryRegister.list();
+    for (Grocery grocery : groceryRegister.groceries) {
+      System.out.println(grocery.getFormattedString());
+    }
   }
 
   public void listRecipes() {
-    recipeRegister.list();
+    for (Recipe recipe : recipeRegister.recipies) {
+      System.out.println(recipe.getFormattedString());
+    }
   }
 
   public void listCookbooks() {
-    cookbookRegister.list();
+    for (Cookbook cookbook : cookbookRegister.cookbooks) {
+      System.out.println(cookbook.getFormattedString());
+    }
   }
 
   public void listExpiredGroceries() {
-    groceryRegister.listExpired();
+    for (Grocery grocery : groceryRegister.getExpired()) {
+      System.out.println(grocery.getFormattedString());
+    }
   }
 
   public void listSortedGroceries() {
-    groceryRegister.listSorted();
+    for (Grocery grocery : groceryRegister.getSorted()) {
+      System.out.println(grocery.getFormattedString());
+    }
   }
 
   public void listAvailableRecipes() {
@@ -291,10 +301,12 @@ public class UserInterface {
     }
   }
 
-  public void listExpiredGroceriesBeforeGivenDate() {
+  public void listGroceriesBeforeDate() {
     try {
       Date date = userInputUtil.getDate("Enter date (dd/MM/yyyy): ");
-      groceryRegister.listExpiredBeforeDate(date);
+      for (Grocery grocery : groceryRegister.getGroceriesBeforeDate(date)) {
+        System.out.println(grocery.getFormattedString());
+      }
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
