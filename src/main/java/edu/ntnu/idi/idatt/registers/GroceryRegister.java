@@ -3,7 +3,6 @@ package edu.ntnu.idi.idatt.registers;
 import edu.ntnu.idi.idatt.types.*;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class GroceryRegister {

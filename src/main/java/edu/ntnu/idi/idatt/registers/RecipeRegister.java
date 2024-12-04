@@ -2,7 +2,6 @@ package edu.ntnu.idi.idatt.registers;
 
 import edu.ntnu.idi.idatt.types.Recipe;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class RecipeRegister {
   public ArrayList<Recipe> recipies = new ArrayList<>();
