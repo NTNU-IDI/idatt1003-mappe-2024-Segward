@@ -3,14 +3,14 @@ package edu.ntnu.idi.idatt.types;
 import java.util.ArrayList;
 
 public class Recipe {
-  public ArrayList<Grocery> groceries;
+  public ArrayList<Ingredient> ingredients;
   public String name;
   public String description;
   public String instructions;
 
   public Recipe(
-      String name, String description, String instructions, ArrayList<Grocery> groceries) {
-    this.groceries = groceries;
+      String name, String description, String instructions, ArrayList<Ingredient> ingredients) {
+    this.ingredients = ingredients;
     this.name = name;
     this.description = description;
     this.instructions = instructions;
@@ -18,13 +18,9 @@ public class Recipe {
 
   public String getFormattedString() {
     StringBuilder sb = new StringBuilder();
-    for (Grocery ingredient : groceries) {
-      sb.append(ingredient.getFormattedString());
+    for (Ingredient ingredient : ingredients) {
+      sb.append(ingredient.getFormattedString() + "\n");
     }
-    return name + ": " + description + "\n" + sb.toString() + "\n" + instructions;
-  }
-
-  public ArrayList<Grocery> getIngredients() {
-    return groceries;
+    return name + "\n" + description + "\n" + sb.toString() + instructions;
   }
 }

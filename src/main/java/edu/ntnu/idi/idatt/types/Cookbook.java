@@ -3,12 +3,11 @@ package edu.ntnu.idi.idatt.types;
 import java.util.ArrayList;
 
 public class Cookbook {
-  public ArrayList<Recipe> recipes;
+  public ArrayList<Recipe> recipes = new ArrayList<>();
   public String name;
 
-  public Cookbook(String name, ArrayList<Recipe> recipes) {
+  public Cookbook(String name) {
     this.name = name;
-    this.recipes = recipes;
   }
 
   public void addRecipe(Recipe recipe) {

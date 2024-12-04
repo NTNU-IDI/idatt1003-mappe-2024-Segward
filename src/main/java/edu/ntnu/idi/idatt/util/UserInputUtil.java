@@ -2,23 +2,25 @@ package edu.ntnu.idi.idatt.util;
 
 import edu.ntnu.idi.idatt.types.Cookbook;
 import edu.ntnu.idi.idatt.types.Grocery;
+import edu.ntnu.idi.idatt.types.Ingredient;
 import edu.ntnu.idi.idatt.types.Recipe;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
-public class UserInput {
+public class UserInputUtil {
 
   private static Scanner scanner = new Scanner(System.in);
   private static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
-  public static String getString(String prompt) {
+  public String getString(String prompt) {
     System.out.print(prompt);
     return scanner.nextLine();
   }
 
-  public static int getInt(String prompt) {
+  public int getInt(String prompt) {
     System.out.print(prompt);
     while (!scanner.hasNextInt()) {
       System.out.println("Invalid input. Please enter a valid number.");
@@ -30,7 +32,7 @@ public class UserInput {
     return choice;
   }
 
-  public static double getDouble(String prompt) {
+  public double getDouble(String prompt) {
     System.out.print(prompt);
     while (true) {
       try {
@@ -42,7 +44,7 @@ public class UserInput {
     }
   }
 
-  public static Date getDate(String prompt) {
+  public Date getDate(String prompt) {
     while (true) {
       System.out.print(prompt);
       try {
@@ -53,7 +55,7 @@ public class UserInput {
     }
   }
 
-  public static Grocery getGrocery() {
+  public Grocery getGrocery() {
     String name = getString("Enter name: ");
     String unit = getString("Enter unit: ");
     int amount = getInt("Enter amount: ");
@@ -62,35 +64,64 @@ public class UserInput {
     return new Grocery(name, unit, amount, pricePerUnit, expirationDate);
   }
 
-  public static Recipe getRecipe() {
+  public Ingredient getIngredient() {
+    String name = getString("Enter name: ");
+    String unit = getString("Enter unit: ");
+    int amount = getInt("Enter amount: ");
+    return new Ingredient(name, unit, amount);
+  }
+
+  public Recipe getRecipe() {
     String name = getString("Enter name: ");
     String description = getString("Enter description: ");
     String instructions = getString("Enter instructions: ");
-    ArrayList<Grocery> groceries = new ArrayList<>();
-    while (getInt("Add another grocery? (1: Yes, 2: No) ") == 1) {
-      groceries.add(getGrocery());
+    ArrayList<Ingredient> ingredients = new ArrayList<>();
+    while (true) {
+      ingredients.add(getIngredient());
+      System.out.print("Add another ingredient? (y/n): ");
+      if (!scanner.nextLine().equalsIgnoreCase("y")) {
+        break;
+      }
     }
-    if (groceries.isEmpty()) {
-      System.out.println("A recipe must contain at least one grocery.");
-      return null;
-    }
-    return new Recipe(name, description, instructions, groceries);
+    return new Recipe(name, description, instructions, ingredients);
   }
 
-  public static Cookbook getCookbook() {
+  public Cookbook getCookbook() {
     String name = getString("Enter name: ");
-    ArrayList<Recipe> recipes = new ArrayList<>();
-    while (getInt("Add another recipe? (1: Yes, 2: No) ") == 1) {
-      recipes.add(getRecipe());
-    }
-    if (recipes.isEmpty()) {
-      System.out.println("A cookbook must contain at least one recipe.");
-      return null;
-    }
-    return new Cookbook(name, recipes);
+    return new Cookbook(name);
   }
 
-  public static void closeScanner() {
+  public ArrayList<String> getSeperatedString(String prompt) {
+    System.out.print(prompt);
+    String input = scanner.nextLine();
+    return new ArrayList<>(List.of(input.replace(" ", "").split(",")));
+  }
+
+  public int getUserInputOption() {
+    System.out.print(
+        """
+        \n
+        1.  Register Grocery
+        2.  Register Recipe
+        3.  Register Cookbook
+        4.  Add Grocery Amount
+        5.  Remove Grocery Amount
+        6.  Add Recipe to Cookbook
+        7.  Search for Grocery
+        8.  List Groceries
+        9.  List Recipes
+        10. List Cookbooks
+        11. List Expired Groceries
+        12. List Sorted Groceries
+        13. List Available Recipes
+        14. Check Recipe Groceries
+        15. List Expired Groceries Before Given Date
+        16. Exit
+        """);
+    return getInt("Enter choice: ");
+  }
+
+  public void closeScanner() {
     scanner.close();
   }
 }

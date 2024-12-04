@@ -1,28 +1,33 @@
 package edu.ntnu.idi.idatt.registers;
 
+import edu.ntnu.idi.idatt.types.Cookbook;
 import java.util.ArrayList;
 
-import edu.ntnu.idi.idatt.types.Cookbook;
-
 public class CookbookRegister {
-    public ArrayList<Cookbook> cookbooks = new ArrayList<>();
+  public ArrayList<Cookbook> cookbooks = new ArrayList<>();
 
-    public CookbookRegister() {}
+  public CookbookRegister() {}
 
-    public void registerCookbook(Cookbook cookbook) {
-        cookbooks.add(cookbook);
+  public void add(Cookbook cookbook) {
+    cookbooks.add(cookbook);
+  }
+
+  public void remove(Cookbook cookbook) {
+    cookbooks.remove(cookbook);
+  }
+
+  public void list() {
+    for (int i = 0; i < cookbooks.size(); i++) {
+      System.out.println(cookbooks.get(i).getFormattedString());
     }
+  }
 
-    public void removeCookbook(Cookbook cookbook) {
-        cookbooks.remove(cookbook);
+  public Cookbook searchForCookbook(String name) {
+    for (int i = 0; i < cookbooks.size(); i++) {
+      if (cookbooks.get(i).name.equals(name)) {
+        return cookbooks.get(i);
+      }
     }
-
-    public Cookbook searchForCookbook(String name) {
-        for (int i = 0; i < cookbooks.size(); i++) {
-            if (cookbooks.get(i).name.equals(name)) {
-                return cookbooks.get(i);
-            }
-        }
-        return null;
-    }
+    return null;
+  }
 }
