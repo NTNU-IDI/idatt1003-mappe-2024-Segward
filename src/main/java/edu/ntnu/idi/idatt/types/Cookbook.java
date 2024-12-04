@@ -25,7 +25,7 @@ public class Cookbook {
   public String getFormattedString() {
     StringBuilder sb = new StringBuilder();
     for (Recipe recipe : recipes) {
-      sb.append("\n" + recipe.getFormattedString());
+      sb.append("\n" + recipe.getFormattedString() + "\n");
     }
     return "Cookbook: " + name + sb.toString();
   }
