@@ -29,14 +29,14 @@ public class Utils {
 
   public int getInt(String prompt) {
     System.out.print(prompt);
-    while (!scanner.hasNextInt()) {
-      System.out.println("Invalid input. Please enter a valid number.");
-      scanner.next();
-      System.out.print("Enter choice: ");
+    while (true) {
+      try {
+        return Integer.parseInt(scanner.nextLine());
+      } catch (NumberFormatException e) {
+        System.out.println("Invalid input. Please enter a valid number.");
+        System.out.print("Enter integer: ");
+      }
     }
-    int choice = scanner.nextInt();
-    scanner.nextLine();
-    return choice;
   }
 
   public double getDouble(String prompt) {
@@ -46,7 +46,7 @@ public class Utils {
         return Double.parseDouble(scanner.nextLine());
       } catch (NumberFormatException e) {
         System.out.println("Invalid input. Please enter a valid number.");
-        System.out.print("Enter choice: ");
+        System.out.print("Enter double: ");
       }
     }
   }
@@ -58,6 +58,7 @@ public class Utils {
         return formatter.parse(scanner.nextLine());
       } catch (Exception e) {
         System.out.println("Invalid date format.");
+        System.out.print("Enter date (dd/MM/yyyy): ");
       }
     }
   }
