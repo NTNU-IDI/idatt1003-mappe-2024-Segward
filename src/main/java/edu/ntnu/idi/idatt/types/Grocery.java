@@ -5,11 +5,12 @@ import java.util.Date;
 public class Grocery {
   public String name;
   private String unit;
-  public int amount;
+  public double amount;
   private double pricePerUnit;
   public Date expirationDate;
 
-  public Grocery(String name, String unit, int amount, double pricePerUnit, Date expirationDate) {
+  public Grocery(
+      String name, String unit, double amount, double pricePerUnit, Date expirationDate) {
     this.name = name;
     this.unit = unit;
     this.amount = amount;
@@ -17,14 +18,13 @@ public class Grocery {
     this.expirationDate = expirationDate;
   }
 
-  public void addAmount(int amount) {
+  public void addAmount(double amount) {
     this.amount += amount;
   }
 
-  public void removeAmount(int amount) {
+  public void removeAmount(double amount) {
     this.amount -= amount;
   }
-
 
   public boolean isExpired() {
     Date currentDate = new Date();

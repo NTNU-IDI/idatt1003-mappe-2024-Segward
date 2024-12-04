@@ -20,9 +20,9 @@ public class UserInterface {
   private final int LIST_COOKBOOKS = 10;
   private final int LIST_EXPIRED_GROCERIES = 11;
   private final int LIST_SORTED_GROCERIES = 12;
-  private final int LIST_AVAILABLE_RECIPIES = 13;
-  private final int LIST_GROCERIES_BEFORE_DATE = 14;
-  private final int CHECK_RECIPE_GROCERIES = 15;
+  private final int LIST_GROCERIES_BEFORE_DATE = 13;
+  private final int SUGGEST_COOKBOOK_RECIPIES = 14;
+  private final int CHECK_RECIPIE_INGREDIENTS = 15;
   private final int EXIT = 16;
   private UserInputUtil userInputUtil = new UserInputUtil();
   private DateUtil dateUtil = new DateUtil();
@@ -135,12 +135,12 @@ public class UserInterface {
           listSortedGroceries();
           break;
 
-        case LIST_AVAILABLE_RECIPIES:
-          listAvailableRecipes();
+        case SUGGEST_COOKBOOK_RECIPIES:
+          suggestCookbookRecipies();
           break;
 
-        case CHECK_RECIPE_GROCERIES:
-          checkRecipeGroceries();
+        case CHECK_RECIPIE_INGREDIENTS:
+          checkRecipeIngredients();
           break;
 
         case LIST_GROCERIES_BEFORE_DATE:
@@ -187,7 +187,7 @@ public class UserInterface {
   public void addGroceryAmount() {
     try {
       String name = userInputUtil.getString("Enter grocery name: ");
-      int amount = userInputUtil.getInt("Enter amount to add: ");
+      double amount = userInputUtil.getDouble("Enter amount to add: ");
       groceryRegister.addAmount(name, amount);
     } catch (Exception e) {
       System.out.println(e.getMessage());
@@ -197,7 +197,7 @@ public class UserInterface {
   public void removeGroceryAmount() {
     try {
       String name = userInputUtil.getString("Enter grocery name: ");
-      int amount = userInputUtil.getInt("Enter amount to remove: ");
+      double amount = userInputUtil.getDouble("Enter amount to remove: ");
       groceryRegister.removeAmount(name, amount);
     } catch (Exception e) {
       System.out.println(e.getMessage());
@@ -273,28 +273,38 @@ public class UserInterface {
     }
   }
 
-  public void listAvailableRecipes() {
+  public void suggestCookbookRecipies() {
     try {
       String cookbookName = userInputUtil.getString("Enter cookbook name: ");
       Cookbook cookbook = cookbookRegister.searchForCookbook(cookbookName);
-      if (cookbook != null) {
-        groceryRegister.suggestRecipies(cookbook);
-      } else {
-        System.out.println("Cookbook not found");
+      if (cookbook == null) {
+        throw new Exception("Cookbook not found");
+      }
+      for (Recipe recipe : cookbook.recipes) {
+        boolean containsAllIngredients = groceryRegister.containsRecipe(recipe);
+        if (containsAllIngredients) {
+          System.out.println(recipe.getFormattedString());
+        } else {
+          System.out.println("Missing ingredients for recipe: " + recipe.name);
+        }
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
   }
 
-  public void checkRecipeGroceries() {
+  public void checkRecipeIngredients() {
     try {
       String recipeName = userInputUtil.getString("Enter recipe name: ");
       Recipe recipe = recipeRegister.searchForRecipe(recipeName);
-      if (recipe != null) {
-        groceryRegister.containsRecipe(recipe);
+      if (recipe == null) {
+        throw new Exception("Recipe not found");
+      }
+      boolean containsAllIngredients = groceryRegister.containsRecipe(recipe);
+      if (containsAllIngredients) {
+        System.out.println("All ingredients are available");
       } else {
-        System.out.println("Recipe not found");
+        System.out.println("Missing ingredients");
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());

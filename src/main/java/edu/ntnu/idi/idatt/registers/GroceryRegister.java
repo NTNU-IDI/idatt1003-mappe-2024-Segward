@@ -29,7 +29,7 @@ public class GroceryRegister {
     groceries.remove(grocery);
   }
 
-  public void addAmount(String name, int amount) {
+  public void addAmount(String name, double amount) {
     Grocery grocery = searchForGrocery(name);
     if (grocery != null) {
       grocery.addAmount(amount);
@@ -41,7 +41,7 @@ public class GroceryRegister {
     }
   }
 
-  public void removeAmount(String name, int amount) {
+  public void removeAmount(String name, double amount) {
     Grocery grocery = searchForGrocery(name);
     if (grocery != null) {
       grocery.removeAmount(amount);
@@ -79,24 +79,14 @@ public class GroceryRegister {
     return sortedGroceries;
   }
 
-  public void containsRecipe(Recipe recipe) {
+  public boolean containsRecipe(Recipe recipe) {
     for (Ingredient ingredient : recipe.ingredients) {
       Grocery contains = searchForGrocery(ingredient.name);
       if (contains == null || contains.amount < ingredient.amount) {
         System.out.println("Missing grocery: " + ingredient.getFormattedString());
-        return;
+        return false;
       }
     }
-    System.out.println("All groceries available");
-  }
-
-  public void suggestRecipies(Cookbook cookbook) {
-    if (cookbook == null) {
-      System.out.println("Cookbook not found");
-      return;
-    }
-    for (Recipe recipe : cookbook.recipes) {
-      containsRecipe(recipe);
-    }
+    return true;
   }
 }

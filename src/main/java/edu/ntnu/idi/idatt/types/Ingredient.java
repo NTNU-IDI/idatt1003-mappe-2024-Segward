@@ -3,9 +3,9 @@ package edu.ntnu.idi.idatt.types;
 public class Ingredient {
   public String name;
   private String unit;
-  public int amount;
+  public double amount;
 
-  public Ingredient(String name, String unit, int amount) {
+  public Ingredient(String name, String unit, double amount) {
     this.name = name;
     this.unit = unit;
     this.amount = amount;
