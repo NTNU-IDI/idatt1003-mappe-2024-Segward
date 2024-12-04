@@ -45,7 +45,6 @@ public class UserInterface {
   public void start() {
     boolean isRunning = true;
     while (isRunning) {
-
       switch (utils.getUserInputOption()) {
         case REGISTER_GROCERY:
           registerGrocery();
@@ -111,6 +110,7 @@ public class UserInterface {
           utils.closeScanner();
           isRunning = false;
           break;
+
         default:
           break;
       }
@@ -242,6 +242,10 @@ public class UserInterface {
     cookbookRegister.cookbooks.forEach(c -> System.out.println(c.getFormattedString()));
   }
 
+  public void listSortedGroceries() {
+    groceryRegister.getSorted().forEach(g -> System.out.println(g.getFormattedString()));
+  }
+
   public void listExpiredGroceries() {
     ArrayList<Grocery> expiredGroceries = groceryRegister.getExpired();
     if (expiredGroceries.isEmpty()) {
@@ -254,10 +258,6 @@ public class UserInterface {
       totalCost += grocery.getPrice();
     }
     System.out.println("Total cost of expired groceries: " + totalCost);
-  }
-
-  public void listSortedGroceries() {
-    groceryRegister.getSorted().forEach(g -> System.out.println(g.getFormattedString()));
   }
 
   public void suggestCookbookRecipies() {
