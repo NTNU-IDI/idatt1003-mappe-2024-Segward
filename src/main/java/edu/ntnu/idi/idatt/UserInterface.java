@@ -42,37 +42,6 @@ public class UserInterface {
     }
   }
 
-  private void addSampleGroceries() {
-    groceryRegister.add(new Grocery("Milk", "liter", 10, 10, utils.getFutureDate(5)));
-    groceryRegister.add(new Grocery("Egg", "pcs", 10, 10, utils.getFutureDate(5)));
-    groceryRegister.add(new Grocery("Flour", "kg", 10, 10, utils.getFutureDate(100)));
-    groceryRegister.add(new Grocery("Sugar", "kg", 10, 10, utils.getPastDate(3)));
-    groceryRegister.add(new Grocery("Butter", "kg", 10, 10, utils.getPastDate(1)));
-  }
-
-  private void addSampleRecipes() {
-    Ingredient ingredient1 = new Ingredient("Milk", "liter", 1);
-    Ingredient ingredient2 = new Ingredient("Egg", "pcs", 2);
-    Ingredient ingredient3 = new Ingredient("Flour", "kg", 0.5);
-    ArrayList<Ingredient> ingredients1 =
-        new ArrayList<>(List.of(ingredient1, ingredient2, ingredient3));
-    ArrayList<Ingredient> ingredients2 = new ArrayList<>(List.of(ingredient1, ingredient2));
-    ArrayList<Ingredient> ingredients3 = new ArrayList<>(List.of(ingredient1, ingredient3));
-    recipeRegister.add(new Recipe("Pancake", "Delicious pancake", "Mix and fry", ingredients1));
-    recipeRegister.add(new Recipe("Waffle", "Delicious waffle", "Mix and fry", ingredients2));
-    recipeRegister.add(new Recipe("Cake", "Delicious cake", "Mix and bake", ingredients3));
-  }
-
-  private void addSampleCookbooks() {
-    Cookbook cookbook1 = new Cookbook("Breakfast");
-    Cookbook cookbook2 = new Cookbook("Dessert");
-    cookbook1.addRecipe(recipeRegister.find("Pancake"));
-    cookbook1.addRecipe(recipeRegister.find("Waffle"));
-    cookbook2.addRecipe(recipeRegister.find("Cake"));
-    cookbookRegister.add(cookbook1);
-    cookbookRegister.add(cookbook2);
-  }
-
   public void start() {
     boolean isRunning = true;
     while (isRunning) {
@@ -146,6 +115,37 @@ public class UserInterface {
           break;
       }
     }
+  }
+
+  private void addSampleGroceries() {
+    groceryRegister.add(new Grocery("Milk", "liter", 10, 10, utils.getFutureDate(5)));
+    groceryRegister.add(new Grocery("Egg", "pcs", 10, 10, utils.getFutureDate(5)));
+    groceryRegister.add(new Grocery("Flour", "kg", 10, 10, utils.getFutureDate(100)));
+    groceryRegister.add(new Grocery("Sugar", "kg", 10, 10, utils.getPastDate(3)));
+    groceryRegister.add(new Grocery("Butter", "kg", 10, 10, utils.getPastDate(1)));
+  }
+
+  private void addSampleRecipes() {
+    Ingredient ingredient1 = new Ingredient("Milk", "liter", 1);
+    Ingredient ingredient2 = new Ingredient("Egg", "pcs", 2);
+    Ingredient ingredient3 = new Ingredient("Flour", "kg", 0.5);
+    ArrayList<Ingredient> ingredients1 =
+        new ArrayList<>(List.of(ingredient1, ingredient2, ingredient3));
+    ArrayList<Ingredient> ingredients2 = new ArrayList<>(List.of(ingredient1, ingredient2));
+    ArrayList<Ingredient> ingredients3 = new ArrayList<>(List.of(ingredient1, ingredient3));
+    recipeRegister.add(new Recipe("Pancake", "Delicious pancake", "Mix and fry", ingredients1));
+    recipeRegister.add(new Recipe("Waffle", "Delicious waffle", "Mix and fry", ingredients2));
+    recipeRegister.add(new Recipe("Cake", "Delicious cake", "Mix and bake", ingredients3));
+  }
+
+  private void addSampleCookbooks() {
+    Cookbook cookbook1 = new Cookbook("Breakfast");
+    Cookbook cookbook2 = new Cookbook("Dessert");
+    cookbook1.addRecipe(recipeRegister.find("Pancake"));
+    cookbook1.addRecipe(recipeRegister.find("Waffle"));
+    cookbook2.addRecipe(recipeRegister.find("Cake"));
+    cookbookRegister.add(cookbook1);
+    cookbookRegister.add(cookbook2);
   }
 
   public void registerGrocery() {
