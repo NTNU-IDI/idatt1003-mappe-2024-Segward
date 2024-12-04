@@ -21,9 +21,15 @@ public class Utils {
     return scanner.nextLine();
   }
 
-  public Date getDateDaysFromToday(int days) {
+  public Date getFutureDate(int days) {
     calendar.setTime(new Date());
     calendar.add(Calendar.DATE, days);
+    return calendar.getTime();
+  }
+
+  public Date getPastDate(int days) {
+    calendar.setTime(new Date());
+    calendar.add(Calendar.DATE, -days);
     return calendar.getTime();
   }
 

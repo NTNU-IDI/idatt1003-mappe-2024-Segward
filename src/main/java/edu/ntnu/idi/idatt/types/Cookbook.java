@@ -18,18 +18,6 @@ public class Cookbook {
     recipes.add(recipe);
   }
 
-  public void removeRecipe(Recipe recipe) {
-    Recipe existingRecipe = searchForRecipe(recipe.name);
-    if (existingRecipe == null) {
-      throw new IllegalArgumentException("Recipe doesnt exist");
-    }
-    recipes.remove(recipe);
-  }
-
-  public ArrayList<Recipe> getRecipes() {
-    return recipes;
-  }
-
   public Recipe searchForRecipe(String name) {
     for (int i = 0; i < recipes.size(); i++) {
       if (recipes.get(i).name.equals(name)) {

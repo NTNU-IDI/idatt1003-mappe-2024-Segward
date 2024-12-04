@@ -1,1 +1,4 @@
-/Volumes/Samsung USB/NTNU/IDATT1003/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/MainTest.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/types/RecipeTest.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/types/GroceryTest.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/types/CookbookTest.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/types/IngredientTest.java
