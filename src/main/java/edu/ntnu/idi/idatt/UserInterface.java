@@ -146,9 +146,13 @@ public class UserInterface {
   }
 
   public void registerGrocery() {
-    Grocery grocery = utils.getGrocery();
-    groceryRegister.add(grocery);
-    System.out.println("Grocery successfully added");
+    try {
+      Grocery grocery = utils.getGrocery();
+      groceryRegister.add(grocery);
+      System.out.println("Grocery successfully added");
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
   }
 
   public void registerRecipe() {

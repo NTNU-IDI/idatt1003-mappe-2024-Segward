@@ -11,15 +11,32 @@ public class Cookbook {
   }
 
   public void addRecipe(Recipe recipe) {
+    Recipe existingRecipe = searchForRecipe(recipe.name);
+    if (existingRecipe != null) {
+      throw new IllegalArgumentException("Recipe already exists");
+    }
     recipes.add(recipe);
   }
 
   public void removeRecipe(Recipe recipe) {
+    Recipe existingRecipe = searchForRecipe(recipe.name);
+    if (existingRecipe == null) {
+      throw new IllegalArgumentException("Recipe doesnt exist");
+    }
     recipes.remove(recipe);
   }
 
   public ArrayList<Recipe> getRecipes() {
     return recipes;
+  }
+
+  public Recipe searchForRecipe(String name) {
+    for (int i = 0; i < recipes.size(); i++) {
+      if (recipes.get(i).name.equals(name)) {
+        return recipes.get(i);
+      }
+    }
+    return null;
   }
 
   public String getFormattedString() {
@@ -28,5 +45,18 @@ public class Cookbook {
       sb.append("\n" + recipe.getFormattedString() + "\n");
     }
     return "Cookbook: " + name + sb.toString();
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < recipes.size(); i++) {
+      if (i == recipes.size() - 1) {
+        sb.append(recipes.get(i).toString());
+      } else {
+        sb.append(recipes.get(i).toString()).append(", ");
+      }
+    }
+    return name + ", " + sb.toString();
   }
 }

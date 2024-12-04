@@ -25,4 +25,17 @@ public class Recipe {
         "Recipe: %s\nDescription: %s\nIngredients:\n%sInstructions: %s",
         name, description, sb.toString(), instructions);
   }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < ingredients.size(); i++) {
+      if (i == ingredients.size() - 1) {
+        sb.append(ingredients.get(i).toString());
+      } else {
+        sb.append(ingredients.get(i).toString()).append(", ");
+      }
+    }
+    return name + ", " + description + ", " + instructions + ", " + sb.toString();
+  }
 }

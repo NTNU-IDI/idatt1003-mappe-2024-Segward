@@ -26,6 +26,10 @@ public class GroceryRegister {
   }
 
   public void remove(Grocery grocery) {
+    Grocery existingGrocery = searchForGrocery(grocery.name);
+    if (existingGrocery == null) {
+      throw new IllegalArgumentException("Grocery doesnt exist");
+    }
     groceries.remove(grocery);
   }
 
