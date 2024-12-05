@@ -14,9 +14,4 @@ public class Ingredient {
   public String getFormattedString() {
     return name + " " + amount + " " + unit;
   }
-
-  @Override
-  public String toString() {
-    return name + ", " + unit + ", " + amount;
-  }
 }
