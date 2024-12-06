@@ -21,8 +21,8 @@ public class UserInterface {
   private final int LIST_EXPIRED_GROCERIES = 11;
   private final int LIST_SORTED_GROCERIES = 12;
   private final int LIST_GROCERIES_BEFORE_DATE = 13;
-  private final int SUGGEST_COOKBOOK_RECIPIES = 14;
-  private final int CHECK_RECIPIE_INGREDIENTS = 15;
+  private final int SUGGEST_COOKBOOK_RECIPES = 14;
+  private final int CHECK_RECIPE_INGREDIENTS = 15;
   private final int EXIT = 16;
   private GroceryRegister groceryRegister;
   private CookbookRegister cookbookRegister;
@@ -94,11 +94,11 @@ public class UserInterface {
           listSortedGroceries();
           break;
 
-        case SUGGEST_COOKBOOK_RECIPIES:
-          suggestCookbookRecipies();
+        case SUGGEST_COOKBOOK_RECIPES:
+          suggestCookbookRecipes();
           break;
 
-        case CHECK_RECIPIE_INGREDIENTS:
+        case CHECK_RECIPE_INGREDIENTS:
           checkRecipeIngredients();
           break;
 
@@ -235,7 +235,7 @@ public class UserInterface {
   }
 
   public void listRecipes() {
-    recipeRegister.recipies.forEach(r -> System.out.println(r.getFormattedString()));
+    recipeRegister.recipes.forEach(r -> System.out.println(r.getFormattedString()));
   }
 
   public void listCookbooks() {
@@ -260,7 +260,7 @@ public class UserInterface {
     System.out.println("\nTotal cost of expired groceries: " + totalCost);
   }
 
-  public void suggestCookbookRecipies() {
+  public void suggestCookbookRecipes() {
     if (groceryRegister.groceries.isEmpty()) {
       System.out.println("No groceries available");
       return;
@@ -269,10 +269,10 @@ public class UserInterface {
       System.out.println("No cookbooks available");
       return;
     }
-    cookbookRegister.cookbooks.forEach(this::suggestRecipies);
+    cookbookRegister.cookbooks.forEach(this::suggestRecipes);
   }
 
-  public void suggestRecipies(Cookbook cookbook) {
+  public void suggestRecipes(Cookbook cookbook) {
     boolean containsAtleastOneRecipe = false;
     System.out.println("\nSuggested recipes for " + cookbook.name);
     for (Recipe recipe : cookbook.recipes) {
@@ -292,7 +292,7 @@ public class UserInterface {
       System.out.println("No groceries available");
       return;
     }
-    if (recipeRegister.recipies.isEmpty()) {
+    if (recipeRegister.recipes.isEmpty()) {
       System.out.println("No recipes available");
       return;
     }

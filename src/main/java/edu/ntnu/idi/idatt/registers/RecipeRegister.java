@@ -4,14 +4,14 @@ import edu.ntnu.idi.idatt.types.Recipe;
 import java.util.ArrayList;
 
 public class RecipeRegister {
-  public ArrayList<Recipe> recipies = new ArrayList<>();
+  public ArrayList<Recipe> recipes = new ArrayList<>();
 
   public void add(Recipe recipe) {
     Recipe existingRecipe = find(recipe.name);
     if (existingRecipe != null) {
       throw new IllegalArgumentException("Recipe already exists");
     } else {
-      recipies.add(recipe);
+      recipes.add(recipe);
     }
   }
 
@@ -20,11 +20,11 @@ public class RecipeRegister {
     if (existingRecipe == null) {
       throw new IllegalArgumentException("Recipe doesnt exist");
     } else {
-      recipies.remove(recipe);
+      recipes.remove(recipe);
     }
   }
 
   public Recipe find(String name) {
-    return recipies.stream().filter(r -> r.name.equals(name)).findFirst().orElse(null);
+    return recipes.stream().filter(r -> r.name.equals(name)).findFirst().orElse(null);
   }
 }
