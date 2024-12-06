@@ -22,14 +22,26 @@ public class Utils {
   }
 
   public Date getFutureDate(int days) {
-    calendar.setTime(new Date());
+    Date date = resetTime(new Date());
+    calendar.setTime(date);
     calendar.add(Calendar.DATE, days);
     return calendar.getTime();
   }
 
   public Date getPastDate(int days) {
-    calendar.setTime(new Date());
+    Date date = resetTime(new Date());
+    calendar.setTime(date);
     calendar.add(Calendar.DATE, -days);
+    return calendar.getTime();
+  }
+
+  private Date resetTime(Date date) {
+    Calendar calendar = Calendar.getInstance();
+    calendar.setTime(date);
+    calendar.set(Calendar.HOUR_OF_DAY, 0);
+    calendar.set(Calendar.MINUTE, 0);
+    calendar.set(Calendar.SECOND, 0);
+    calendar.set(Calendar.MILLISECOND, 0);
     return calendar.getTime();
   }
 

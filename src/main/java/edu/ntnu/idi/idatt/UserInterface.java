@@ -257,7 +257,7 @@ public class UserInterface {
       System.out.println(grocery.getFormattedString());
       totalCost += grocery.getPrice();
     }
-    System.out.println("Total cost of expired groceries: " + totalCost);
+    System.out.println("\nTotal cost of expired groceries: " + totalCost);
   }
 
   public void suggestCookbookRecipies() {
@@ -274,6 +274,7 @@ public class UserInterface {
 
   public void suggestRecipies(Cookbook cookbook) {
     boolean containsAtleastOneRecipe = false;
+    System.out.println("\nSuggested recipes for " + cookbook.name);
     for (Recipe recipe : cookbook.recipes) {
       boolean containsAllIngredients = groceryRegister.hasSufficientIngredients(recipe.ingredients);
       if (containsAllIngredients) {
@@ -282,7 +283,7 @@ public class UserInterface {
       }
     }
     if (!containsAtleastOneRecipe) {
-      System.out.println("No recipes available for " + cookbook.name);
+      System.out.println("\nNo recipes available for " + cookbook.name);
     }
   }
 

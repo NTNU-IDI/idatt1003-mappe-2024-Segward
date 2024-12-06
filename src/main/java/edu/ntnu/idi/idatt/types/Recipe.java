@@ -22,7 +22,7 @@ public class Recipe {
       sb.append("\t-  ").append(ingredient.getFormattedString()).append("\n");
     }
     return String.format(
-        "Recipe: %s\nDescription: %s\nIngredients:\n%sInstructions: %s",
+        "\nRecipe: %s\nDescription: %s\nIngredients:\n%sInstructions: %s",
         name, description, sb.toString(), instructions);
   }
 }

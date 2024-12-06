@@ -27,6 +27,6 @@ public class Grocery {
   }
 
   public String getFormattedString() {
-    return "\n" + name + " " + amount + " " + unit;
+    return "\n" + name + " " + amount + " " + unit + " expires: " + expirationDate;
   }
 }
