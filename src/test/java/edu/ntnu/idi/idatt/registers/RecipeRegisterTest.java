@@ -18,20 +18,18 @@ public class RecipeRegisterTest {
   @BeforeEach
   public void setup() {
     recipeRegister = new RecipeRegister();
-    ArrayList<String> authors = new ArrayList<>();
-    authors.add("John Doe");
 
     ArrayList<Ingredient> ingredients1 = new ArrayList<>();
     ingredients1.add(new Ingredient("Flour", "kg", 1));
     ingredients1.add(new Ingredient("Sugar", "kg", 0.5));
     ingredients1.add(new Ingredient("Egg", "pcs", 3));
-    recipe1 = new Recipe("Cake", "Delicious cake", "Mix ingredients and bake", ingredients1, authors);
+    recipe1 = new Recipe("Cake", "Delicious cake", "Mix ingredients and bake", 3, ingredients1);
 
     ArrayList<Ingredient> ingredients2 = new ArrayList<>();
     ingredients2.add(new Ingredient("Milk", "liter", 1));
     ingredients2.add(new Ingredient("Sugar", "kg", 0.5));
     ingredients2.add(new Ingredient("Egg", "pcs", 2));
-    recipe2 = new Recipe("Pancake", "Delicious pancake", "Mix ingredients and fry", ingredients2, authors);
+    recipe2 = new Recipe("Pancake", "Delicious pancake", "Mix ingredients and fry", 4, ingredients2);
   }
 
   /** Test adding a recipe to the register */

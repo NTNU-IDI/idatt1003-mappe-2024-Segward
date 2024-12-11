@@ -17,9 +17,6 @@ public class RecipeTest {
   /** Set up the the ingredients and recipe for the tests */
   @BeforeEach
   public void setup() {
-    ArrayList<String> authors = new ArrayList<>();
-    authors.add("John Doe");
-    authors.add("Jane Doe");
 
     ingredients =
         new ArrayList<>(
@@ -28,7 +25,7 @@ public class RecipeTest {
                 new Ingredient("Sugar", "kg", 0.5),
                 new Ingredient("Egg", "pcs", 3)));
 
-    recipe = new Recipe("Cake", "Delicious cake", "Mix ingredients and bake", ingredients, authors);
+    recipe = new Recipe("Cake", "Delicious cake", "Mix ingredients and bake", 4, ingredients);
   }
 
   /** Test the recipe constructor */
@@ -50,7 +47,7 @@ public class RecipeTest {
             + "\t-  Sugar 0.5 kg\n"
             + "\t-  Egg 3.0 pcs\n"
             + "Instructions: Mix ingredients and bake"
-            + "\nAuthors: John Doe, Jane Doe";
+            + "\nThis recipe feeds: 4 people";
     assertEquals(expected, recipe.getFormattedString());
   }
 
@@ -83,7 +80,7 @@ public class RecipeTest {
             + "\t-  Sugar 0.5 kg\n"
             + "\t-  Egg 3.0 pcs\n"
             + "Instructions: Mix ingredients and bake"
-            + "\nAuthors: John Doe, Jane Doe";
+            + "\nThis recipe feeds: 4 people";
     assertNotEquals(expected, recipe.getFormattedString());
   }
 }
