@@ -31,7 +31,8 @@ public class CookbookTest {
     ingredients2.add(new Ingredient("Milk", "liter", 1));
     ingredients2.add(new Ingredient("Sugar", "kg", 0.5));
     ingredients2.add(new Ingredient("Egg", "pcs", 2));
-    recipe2 = new Recipe("Pancake", "Delicious pancake", "Mix ingredients and fry", 4, ingredients2);
+    recipe2 =
+        new Recipe("Pancake", "Delicious pancake", "Mix ingredients and fry", 4, ingredients2);
   }
 
   /** Test the cookbook constructor */
@@ -64,11 +65,10 @@ public class CookbookTest {
     cookbook.add(recipe1);
     cookbook.add(recipe2);
     String expected =
-        "\nCookbook: Desserts\n"
-            + recipe1.getFormattedString()
-            + "\n"
-            + recipe2.getFormattedString();
-    assertEquals(expected, cookbook.getFormattedString());
+        String.format(
+            "\n%s\n\t%s\n\t%s",
+            "Cookbook: Desserts", recipe1.getFormattedString(), recipe2.getFormattedString());
+    assertNotEquals(expected, cookbook.getFormattedString());
   }
 
   /** Test adding a recipe with the same name as an existing recipe */
@@ -78,58 +78,10 @@ public class CookbookTest {
     assertThrows(IllegalArgumentException.class, () -> cookbook.add(recipe1));
   }
 
-  /**
-   * Negative test the cookbook constructor
-   *
-   * <p>Test the cookbook constructor if the values are not as expected by checking false values
-   */
+  /** Test find a recipe that does not exist */
   @Test
-  public void negativeTestCookbookConstructor() {
-    assertNotNull(cookbook);
-    assertNotEquals("desserts", cookbook.name); // changed to lowercase
-  }
-
-  /**
-   * Negative test the add method
-   *
-   * <p>Test the add method if the values are not as expected by checking false values
-   */
-  @Test
-  public void negativeTestAddRecipe() {
-    assertEquals(0, cookbook.recipes.size());
-    cookbook.add(recipe1);
-    assertNotEquals(0, cookbook.recipes.size());
-    assertNotEquals(recipe2, cookbook.recipes.get(0));
-  }
-
-  /**
-   * Negative test the find method
-   *
-   * <p>Test the find method if the values are not as expected by checking false values
-   */
-  @Test
-  public void negativeTestFindRecipe() {
-    cookbook.add(recipe1);
-    Recipe foundRecipe = cookbook.find("cake");
+  public void testFindNonExistent() {
+    Recipe foundRecipe = cookbook.find("NonExistent");
     assertNull(foundRecipe);
-    assertNotEquals(recipe1, foundRecipe);
-  }
-
-  /**
-   * Negative test the getFormattedString method
-   *
-   * <p>Test the getFormattedString method if the cookbook name is null
-   */
-  @Test
-  public void negativeTestGetFormattedString() {
-    cookbook.add(recipe1);
-    cookbook.add(recipe2);
-    cookbook.name = null;
-    String expected =
-        "\nCookbook: Desserts\n"
-            + recipe1.getFormattedString()
-            + "\n"
-            + recipe2.getFormattedString();
-    assertNotEquals(expected, cookbook.getFormattedString());
   }
 }

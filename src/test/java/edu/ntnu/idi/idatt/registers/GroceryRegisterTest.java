@@ -118,35 +118,47 @@ public class GroceryRegisterTest {
 
     assertFalse(groceryRegister.hasSufficientIngredients(ingredients));
   }
-  
-  /**
-   * Negative test the add grocery method
-   *
-   * <p>Test adding a null grocery
-   */
+
+  /** Test adding a null grocery */
   @Test
-  public void negativeTestAddGrocery() {
+  public void testAddNullGrocery() {
     assertThrows(NullPointerException.class, () -> groceryRegister.add(null));
   }
 
-  /**
-   * Negative test the remove grocery method
-   *
-   * <p>Test removing a null grocery
-   */
+  /** Test removing a null grocery */
   @Test
-  public void negativeTestRemoveGrocery() {
+  public void testRemoveNullGrocery() {
     assertThrows(NullPointerException.class, () -> groceryRegister.remove(null));
   }
 
-  /**
-   * Negative test the find method
-   *
-   * <p>Test finding a grocery by name but the grocery register is empty
-   */
+  /** Test finding non existent grocery */
   @Test
-  public void negativeTestFindGrocery() {
-    Grocery foundGrocery = groceryRegister.find("milk");
+  public void testFindNonExistent() {
+    Grocery foundGrocery = groceryRegister.find("NonExistent");
     assertNull(foundGrocery);
+  }
+
+  /** Test removing grocery amount */
+  @Test
+  public void testRemoveAmount() {
+    groceryRegister.add(grocery1);
+    groceryRegister.removeAmount("Milk", 1.0);
+    assertEquals(1.0, groceryRegister.find("Milk").amount);
+  }
+
+  /** Test adding grocery amount */
+  @Test
+  public void testAddAmount() {
+    groceryRegister.add(grocery1);
+    groceryRegister.addAmount("Milk", 1.0);
+    assertEquals(3.0, groceryRegister.find("Milk").amount);
+  }
+
+  /** Test removing grocery amount that results in negative amount */
+  @Test
+  public void testRemoveAmountNegative() {
+    groceryRegister.add(grocery1);
+    groceryRegister.removeAmount("Milk", 100.0);
+    assertNull(groceryRegister.find("Milk"));
   }
 }

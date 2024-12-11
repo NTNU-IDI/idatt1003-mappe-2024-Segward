@@ -58,24 +58,16 @@ public class CookbookRegisterTest {
     assertEquals(cookbook2, foundCookbook);
   }
 
-  /**
-   * Negative test the add method
-   *
-   * <p>Test adding a null cookbook
-   */
+  /** Test adding a null cookbook */
   @Test
-  public void negativeTestAddCookbook() {
+  public void testAddNullCookbook() {
     assertThrows(NullPointerException.class, () -> cookbookRegister.add(null));
   }
 
-  /**
-   * Negative test the find method
-   *
-   * <p>Test finding a cookbook with no cookbooks in the register
-   */
+  /** Test finding non existing cookbook */
   @Test
-  public void negativeTestFindCookbook() {
-    Cookbook foundCookbook = cookbookRegister.find("Breakfast");
+  public void testFindNonExistent() {
+    Cookbook foundCookbook = cookbookRegister.find("NonExistent");
     assertEquals(null, foundCookbook);
   }
 }

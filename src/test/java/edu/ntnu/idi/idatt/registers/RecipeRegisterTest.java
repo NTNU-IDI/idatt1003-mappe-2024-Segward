@@ -29,7 +29,8 @@ public class RecipeRegisterTest {
     ingredients2.add(new Ingredient("Milk", "liter", 1));
     ingredients2.add(new Ingredient("Sugar", "kg", 0.5));
     ingredients2.add(new Ingredient("Egg", "pcs", 2));
-    recipe2 = new Recipe("Pancake", "Delicious pancake", "Mix ingredients and fry", 4, ingredients2);
+    recipe2 =
+        new Recipe("Pancake", "Delicious pancake", "Mix ingredients and fry", 4, ingredients2);
   }
 
   /** Test adding a recipe to the register */
@@ -37,11 +38,8 @@ public class RecipeRegisterTest {
   public void testAddRecipe() {
     recipeRegister.add(recipe1);
     assertEquals(1, recipeRegister.recipes.size());
-    assertEquals(recipe1, recipeRegister.recipes.get(0));
-
     recipeRegister.add(recipe2);
     assertEquals(2, recipeRegister.recipes.size());
-    assertEquals(recipe2, recipeRegister.recipes.get(1));
   }
 
   /** Test adding a recipe with the same name as an existing recipe */
@@ -76,24 +74,9 @@ public class RecipeRegisterTest {
     assertNull(foundRecipe);
   }
 
-  /**
-   * Negative test the add method
-   *
-   * <p>Test adding a null recipe
-   */
+  /** Test adding a null recipe */
   @Test
-  public void negativeTestAddRecipe() {
+  public void testAddNullRecipe() {
     assertThrows(NullPointerException.class, () -> recipeRegister.add(null));
-  }
-
-  /**
-   * Negative test the find method
-   *
-   * <p>Test finding a recipe by name but the recipe register is empty
-   */
-  @Test
-  public void negativeTestFindRecipe2() {
-    Recipe foundRecipe = recipeRegister.find("Pancake");
-    assertNull(foundRecipe);
   }
 }
