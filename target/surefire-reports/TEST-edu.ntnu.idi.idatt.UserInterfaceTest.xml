@@ -13,7 +13,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="NO"/>
     <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/23/libexec/openjdk.jdk/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/target/surefire/surefirebooter-20241211105713144_3.jar /Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/target/surefire 2024-12-11T10-57-13_095-jvmRun1 surefire-20241211105713144_1tmp surefire_0-20241211105713144_2tmp"/>
+    <property name="sun.java.command" value="/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/target/surefire/surefirebooter-20241211113738125_3.jar /Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/target/surefire 2024-12-11T11-37-38_080-jvmRun1 surefire-20241211113738125_1tmp surefire_0-20241211113738125_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/target/test-classes:/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/target/classes:/Users/gustavskyberg/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.1/junit-jupiter-engine-5.8.1.jar:/Users/gustavskyberg/.m2/repository/org/junit/platform/junit-platform-engine/1.8.1/junit-platform-engine-1.8.1.jar:/Users/gustavskyberg/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/gustavskyberg/.m2/repository/org/junit/platform/junit-platform-commons/1.8.1/junit-platform-commons-1.8.1.jar:/Users/gustavskyberg/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.1/junit-jupiter-api-5.8.1.jar:/Users/gustavskyberg/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/target/surefire/surefirebooter-20241211105713144_3.jar"/>
+    <property name="surefire.real.class.path" value="/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/target/surefire/surefirebooter-20241211113738125_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="23"/>
@@ -62,8 +62,8 @@
   <testcase name="testAddSampleGroceries" classname="edu.ntnu.idi.idatt.UserInterfaceTest" time="0.0"/>
   <testcase name="testInit" classname="edu.ntnu.idi.idatt.UserInterfaceTest" time="0.001"/>
   <testcase name="negativeTestAddSampleRecipes" classname="edu.ntnu.idi.idatt.UserInterfaceTest" time="0.0"/>
-  <testcase name="negativeTestAddSampleCookbooks" classname="edu.ntnu.idi.idatt.UserInterfaceTest" time="0.001"/>
+  <testcase name="negativeTestAddSampleCookbooks" classname="edu.ntnu.idi.idatt.UserInterfaceTest" time="0.0"/>
   <testcase name="testAddSampleCookbooks" classname="edu.ntnu.idi.idatt.UserInterfaceTest" time="0.0"/>
-  <testcase name="testAddSampleRecipes" classname="edu.ntnu.idi.idatt.UserInterfaceTest" time="0.0"/>
+  <testcase name="testAddSampleRecipes" classname="edu.ntnu.idi.idatt.UserInterfaceTest" time="0.001"/>
   <testcase name="negativeTestAddSampleGroceries" classname="edu.ntnu.idi.idatt.UserInterfaceTest" time="0.0"/>
 </testsuite>

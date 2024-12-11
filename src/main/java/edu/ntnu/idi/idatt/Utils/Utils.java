@@ -224,6 +224,27 @@ public class Utils {
   }
 
   /**
+   * Get a list of authors from the user.
+   *
+   * <p>The user is prompted to enter the name of each author. The user can choose to add more
+   * authors until they choose to stop.
+   *
+   * @return the list of authors entered by the user
+   */
+  public ArrayList<String> getAuthors() {
+    System.out.println("\nNow add the authors.");
+    ArrayList<String> authors = new ArrayList<>();
+    authors.add(getString("Enter author name: "));
+
+    System.out.print("Add another author? (y/n): ");
+    while (scanner.nextLine().equalsIgnoreCase("y")) {
+      authors.add(getString("Enter author name: "));
+      System.out.print("Add another author? (y/n): ");
+    }
+    return authors;
+  }
+
+  /**
    * Get a recipe from the user.
    *
    * <p>The user is prompted to enter the name, description, instructions, and ingredients of the
@@ -237,7 +258,8 @@ public class Utils {
         getString("Enter recipe name: "),
         getString("Enter recipe description: "),
         getString("Enter recipe instructions: "),
-        getIngredients());
+        getIngredients(),
+        getAuthors());
   }
 
   /**

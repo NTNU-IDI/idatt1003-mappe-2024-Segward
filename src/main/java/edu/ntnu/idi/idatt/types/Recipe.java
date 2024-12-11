@@ -8,6 +8,7 @@ public class Recipe {
   public String name;
   public String description;
   public String instructions;
+  public ArrayList<String> authors;
 
   /**
    * Create a new recipe.
@@ -18,11 +19,16 @@ public class Recipe {
    * @param ingredients the ingredients needed for the recipe
    */
   public Recipe(
-      String name, String description, String instructions, ArrayList<Ingredient> ingredients) {
+      String name,
+      String description,
+      String instructions,
+      ArrayList<Ingredient> ingredients,
+      ArrayList<String> authors) {
     this.ingredients = ingredients;
     this.name = name;
     this.description = description;
     this.instructions = instructions;
+    this.authors = authors;
   }
 
   /**
@@ -35,8 +41,15 @@ public class Recipe {
     for (Ingredient ingredient : ingredients) {
       sb.append("\t-  ").append(ingredient.getFormattedString()).append("\n");
     }
+    StringBuilder authorsString = new StringBuilder();
+    for (int i = 0; i < authors.size(); i++) {
+      authorsString.append(authors.get(i));
+      if (i < authors.size() - 1) {
+        authorsString.append(", ");
+      }
+    }
     return String.format(
-        "\nRecipe: %s\nDescription: %s\nIngredients:\n%sInstructions: %s",
-        name, description, sb.toString(), instructions);
+        "\nRecipe: %s\nDescription: %s\nIngredients:\n%sInstructions: %s\nAuthors: %s",
+        name, description, sb.toString(), instructions, authorsString.toString());
   }
 }

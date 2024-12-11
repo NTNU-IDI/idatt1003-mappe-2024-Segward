@@ -153,9 +153,10 @@ public class UserInterface {
         new ArrayList<>(List.of(ingredient1, ingredient2, ingredient3));
     ArrayList<Ingredient> ingredients2 = new ArrayList<>(List.of(ingredient1, ingredient2));
     ArrayList<Ingredient> ingredients3 = new ArrayList<>(List.of(ingredient1, ingredient3));
-    recipeRegister.add(new Recipe("Pancake", "Delicious pancake", "Mix and fry", ingredients1));
-    recipeRegister.add(new Recipe("Waffle", "Delicious waffle", "Mix and fry", ingredients2));
-    recipeRegister.add(new Recipe("Cake", "Delicious cake", "Mix and bake", ingredients3));
+    ArrayList<String> authors = new ArrayList<>(List.of("John Doe", "Jane Doe", "Jack Doe", "Jill Doe"));
+    recipeRegister.add(new Recipe("Pancake", "Delicious pancake", "Mix and fry", ingredients1, authors));
+    recipeRegister.add(new Recipe("Waffle", "Delicious waffle", "Mix and fry", ingredients2, authors));
+    recipeRegister.add(new Recipe("Cake", "Delicious cake", "Mix and bake", ingredients3, authors));
   }
 
   /** Creates and adds sample cookbooks to the cookbook register. */
