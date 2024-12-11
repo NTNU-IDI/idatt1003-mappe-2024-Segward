@@ -1,70 +1,108 @@
 package edu.ntnu.idi.idatt.types;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/** Tests the grocery class */
 public class GroceryTest {
+  private Grocery grocery;
+  private Date expirationDate;
 
-  @Test
-  public void testSetAmountPositive() {
-    Grocery grocery = new Grocery("Test", "kg", 1, 1, null);
-    grocery.setAmount(2);
-    assertEquals(2, grocery.amount, "The amount should be 2 after adding 1.");
+  /**
+   * Set up the grocery
+   *
+   * <p>The date format is used for creating dates used in the grocery class.
+   */
+  @BeforeEach
+  public void setup() throws Exception {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    expirationDate = dateFormat.parse("31/12/2023");
+    grocery = new Grocery("Milk", "liter", 2.0, 1.5, expirationDate);
   }
 
+  /** Test the grocery constructor */
   @Test
-  public void testIsExpiredPositive() {
-    Date currentDate = new Date();
-    Date expirationDate = new Date(currentDate.getTime() - 1000);
-    Grocery grocery = new Grocery("Test", "kg", 1, 1, expirationDate);
-    assertTrue(grocery.expirationDate.before(currentDate), "The grocery should be expired.");
+  public void testGroceryConstructor() {
+    assertNotNull(grocery);
+    assertEquals("Milk", grocery.name);
+    assertEquals("liter", grocery.unit);
+    assertEquals(2.0, grocery.amount);
+    assertEquals(1.5, grocery.pricePerUnit);
+    assertEquals(expirationDate, grocery.expirationDate);
   }
 
+  /** Test setting the grocery amount */
   @Test
-  public void testGetPricePositive() {
-    Grocery grocery = new Grocery("Test", "kg", 3, 1, null);
-    assertEquals(3, grocery.getPrice(), "The price should be 3.");
+  public void testSetAmount() {
+    grocery.setAmount(3.0);
+    assertEquals(3.0, grocery.amount);
   }
 
+  /** Test getting the price from the grocery */
   @Test
-  public void testGetFormattedStringPositive() {
-    Grocery grocery = new Grocery("Test", "kg", 1, 1, null);
-    assertEquals(
-        "Test 1.0 kg",
-        grocery.getFormattedString(),
-        "The formatted string should be 'Test 1.0 kg'.");
+  public void testGetPrice() {
+    assertEquals(3.0, grocery.getPrice());
   }
 
+  /** Test the getFormattedString method */
   @Test
-  public void testSetAmountNegative() {
-    Grocery grocery = new Grocery("Test", "kg", 1, 1, null);
-    grocery.setAmount(5);
-    assertEquals(2, grocery.amount, "The amount should be 2 after adding 1.");
+  public void testGetFormattedString() {
+    String expected = "\nMilk 2.0 liter expires: Sun Dec 31 00:00:00 CET 2023";
+    assertEquals(expected, grocery.getFormattedString());
   }
 
+  /**
+   * Negative test the grocery constructor
+   *
+   * <p>Test the grocery constructor if the values are not as expected by checking false values
+   */
   @Test
-  public void testIsExpiredNegative() {
-    Date currentDate = new Date();
-    Date expirationDate = new Date(currentDate.getTime() + 1000);
-    Grocery grocery = new Grocery("Test", "kg", 1, 1, expirationDate);
-    assertTrue(grocery.expirationDate.before(currentDate), "The grocery should be expired.");
+  public void negativeTestGroceryConstructor() {
+    assertNotNull(grocery);
+    assertNotEquals("milk", grocery.name); // changed to lowercase
+    assertEquals("liter", grocery.unit);
+    assertEquals(2.0, grocery.amount);
+    assertEquals(1.5, grocery.pricePerUnit);
+    assertEquals(expirationDate, grocery.expirationDate);
   }
 
+  /**
+   * Negative test for setAmount
+   *
+   * <p>Test the setAmount method with a negative amount
+   */
   @Test
-  public void testGetPriceNegative() {
-    Grocery grocery = new Grocery("Test", "kg", 2, 1, null);
-    assertEquals(3, grocery.getPrice(), "The price should be 3.");
+  public void negativeTestSetAmount() {
+    grocery.setAmount(-1.0);
+    assertNotEquals(2.0, grocery.amount);
   }
 
+  /**
+   * Negative test for getPrice
+   *
+   * <p>Test the getPrice method with a negative price per unit
+   */
   @Test
-  public void testGetFormattedStringNegative() {
-    Grocery grocery = new Grocery("Test", "kg", 3, 1, null);
-    assertEquals(
-        "Test 1.0 kg",
-        grocery.getFormattedString(),
-        "The formatted string should be 'Test 1.0 kg'.");
+  public void negativeTestGetPrice() {
+    grocery.pricePerUnit = -1.5;
+    assertNotEquals(3.0, grocery.getPrice());
+  }
+
+  /**
+   * Negative test for getFormattedString
+   *
+   * <p>Test the getFormattedString method with a null expiration date
+   */
+  @Test
+  public void negativeTestGetFormattedString() {
+    grocery.expirationDate = null;
+    String expected = "\nMilk 2.0 liter expires: null";
+    assertEquals(expected, grocery.getFormattedString());
   }
 }

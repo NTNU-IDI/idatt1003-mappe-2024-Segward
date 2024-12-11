@@ -1,0 +1,10 @@
+edu/ntnu/idi/idatt/UserInterface.class
+edu/ntnu/idi/idatt/types/Ingredient.class
+edu/ntnu/idi/idatt/types/Cookbook.class
+edu/ntnu/idi/idatt/registers/GroceryRegister.class
+edu/ntnu/idi/idatt/types/Recipe.class
+edu/ntnu/idi/idatt/registers/RecipeRegister.class
+edu/ntnu/idi/idatt/types/Grocery.class
+edu/ntnu/idi/idatt/Main.class
+edu/ntnu/idi/idatt/Utils/Utils.class
+edu/ntnu/idi/idatt/registers/CookbookRegister.class

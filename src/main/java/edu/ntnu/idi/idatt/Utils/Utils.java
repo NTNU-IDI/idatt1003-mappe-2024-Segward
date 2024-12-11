@@ -10,17 +10,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
+/** A utility class for handling user input and dates */
 public class Utils {
-
   private static Scanner scanner = new Scanner(System.in);
   private static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
   private Calendar calendar = Calendar.getInstance();
 
-  public String getString(String prompt) {
-    System.out.print(prompt);
-    return scanner.nextLine();
-  }
-
+  /**
+   * Get a future date from the current date.
+   *
+   * @param days
+   * @return the future date
+   */
   public Date getFutureDate(int days) {
     Date date = resetTime(new Date());
     calendar.setTime(date);
@@ -28,6 +29,12 @@ public class Utils {
     return calendar.getTime();
   }
 
+  /**
+   * Get a past date from the current date.
+   *
+   * @param days
+   * @return the past date
+   */
   public Date getPastDate(int days) {
     Date date = resetTime(new Date());
     calendar.setTime(date);
@@ -35,7 +42,13 @@ public class Utils {
     return calendar.getTime();
   }
 
-  private Date resetTime(Date date) {
+  /**
+   * Reset the time of a date to 00:00:00.000.
+   *
+   * @param date
+   * @return the date with the time reset
+   */
+  public Date resetTime(Date date) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(date);
     calendar.set(Calendar.HOUR_OF_DAY, 0);
@@ -45,6 +58,23 @@ public class Utils {
     return calendar.getTime();
   }
 
+  /**
+   * Get a string from the user.
+   *
+   * @param prompt
+   * @return the string entered by the user
+   */
+  public String getString(String prompt) {
+    System.out.print(prompt);
+    return scanner.nextLine();
+  }
+
+  /**
+   * Get an integer from the user.
+   *
+   * @param prompt
+   * @return the integer entered by the user
+   */
   public int getInt(String prompt) {
     System.out.print(prompt);
     String input = scanner.nextLine();
@@ -56,6 +86,12 @@ public class Utils {
     return Integer.parseInt(input);
   }
 
+  /**
+   * Verify that the input is an integer.
+   *
+   * @param input
+   * @return true if the input is an integer, false otherwise
+   */
   private boolean verifyIntInput(String input) {
     try {
       Integer.parseInt(input);
@@ -65,6 +101,12 @@ public class Utils {
     }
   }
 
+  /**
+   * Get a double from the user.
+   *
+   * @param prompt
+   * @return the double entered by the user
+   */
   public double getDouble(String prompt) {
     System.out.print(prompt);
     String input = scanner.nextLine();
@@ -76,6 +118,12 @@ public class Utils {
     return Double.parseDouble(input);
   }
 
+  /**
+   * Verify that the input is a double.
+   *
+   * @param input
+   * @return true if the input is a double, false otherwise
+   */
   private boolean verifyDoubleInput(String input) {
     try {
       Double.parseDouble(input);
@@ -85,6 +133,12 @@ public class Utils {
     }
   }
 
+  /**
+   * Get a date from the user.
+   *
+   * @param prompt
+   * @return the date entered by the user
+   */
   public Date getDate(String prompt) {
     System.out.print(prompt);
     String input = scanner.nextLine();
@@ -100,6 +154,12 @@ public class Utils {
     }
   }
 
+  /**
+   * Verify that the input is a valid date.
+   *
+   * @param input
+   * @return true if the input is a valid date, false otherwise
+   */
   private boolean verifyDateInput(String input) {
     try {
       formatter.parse(input);
@@ -109,23 +169,53 @@ public class Utils {
     }
   }
 
+  /**
+   * Get a grocery from the user.
+   *
+   * <p>The user is prompted to enter the name, unit, amount, price per unit, and expiration date of
+   * the grocery.
+   *
+   * @return the grocery entered by the user
+   */
   public Grocery getGrocery() {
+    System.out.println("\nEnter the grocery details.\n");
     return new Grocery(
-        getString("Enter name: "),
-        getString("Enter unit: "),
-        getDouble("Enter amount: "),
-        getDouble("Enter price per unit: "),
-        getDate("Enter expiration date (dd/MM/yyyy): "));
+        getString("Enter grocery name: "),
+        getString("Enter grocery unit: "),
+        getDouble("Enter grocery amount: "),
+        getDouble("Enter grocery price per unit: "),
+        getDate("Enter groecry expiration date (dd/MM/yyyy): "));
   }
 
+  /**
+   * Get an ingredient from the user.
+   *
+   * <p>The user is prompted to enter the name, unit, and amount of the ingredient.
+   *
+   * @return the ingredient entered by the user
+   */
   public Ingredient getIngredient() {
+    System.out.println("\nEnter the ingredient details.\n");
     return new Ingredient(
-        getString("Enter name: "), getString("Enter unit: "), getInt("Enter amount: "));
+        getString("Enter ingredient name: "),
+        getString("Enter ingredient unit: "),
+        getInt("Enter ingredient amount: "));
   }
 
+  /**
+   * Get a list of ingredients from the user.
+   *
+   * <p>The user is prompted to enter the name, unit, and amount of each ingredient. The user can
+   * choose to add more ingredients until they choose to stop.
+   *
+   * @return the list of ingredients entered by the user
+   */
   public ArrayList<Ingredient> getIngredients() {
+    System.out.println("\nNow add the ingredients.");
     ArrayList<Ingredient> ingredients = new ArrayList<>();
     ingredients.add(getIngredient());
+
+    System.out.print("Add another ingredient? (y/n): ");
     while (scanner.nextLine().equalsIgnoreCase("y")) {
       ingredients.add(getIngredient());
       System.out.print("Add another ingredient? (y/n): ");
@@ -133,19 +223,40 @@ public class Utils {
     return ingredients;
   }
 
+  /**
+   * Get a recipe from the user.
+   *
+   * <p>The user is prompted to enter the name, description, instructions, and ingredients of the
+   * recipe.
+   *
+   * @return the recipe entered by the user
+   */
   public Recipe getRecipe() {
+    System.out.println("\nEnter the recipe details.\n");
     return new Recipe(
-        getString("Enter name: "),
-        getString("Enter description: "),
-        getString("Enter instructions: "),
+        getString("Enter recipe name: "),
+        getString("Enter recipe description: "),
+        getString("Enter recipe instructions: "),
         getIngredients());
   }
 
+  /**
+   * Get a cookbook from the user.
+   *
+   * <p>The user is prompted to enter the name of the cookbook.
+   *
+   * @return the cookbook entered by the user
+   */
   public Cookbook getCookbook() {
-    String name = getString("Enter name: ");
+    String name = getString("Enter cookbook name: ");
     return new Cookbook(name);
   }
 
+  /**
+   * Get the user's choice of action.
+   *
+   * @return the user's choice of action
+   */
   public int getUserInputOption() {
     System.out.println();
     System.out.println(
@@ -170,6 +281,7 @@ public class Utils {
     return getInt("Enter choice: ");
   }
 
+  /** Close the scanner. */
   public void closeScanner() {
     scanner.close();
   }

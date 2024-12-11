@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * The user interface of the application.
+ *
+ * <p>This class is responsible for handling user input and displaying information to the user.
+ */
 public class UserInterface {
   private final int REGISTER_GROCERY = 1;
   private final int REGISTER_RECIPE = 2;
@@ -24,11 +29,19 @@ public class UserInterface {
   private final int SUGGEST_COOKBOOK_RECIPES = 14;
   private final int CHECK_RECIPE_INGREDIENTS = 15;
   private final int EXIT = 16;
-  private GroceryRegister groceryRegister;
-  private CookbookRegister cookbookRegister;
-  private RecipeRegister recipeRegister;
   private Utils utils = new Utils();
+  public GroceryRegister groceryRegister;
+  public CookbookRegister cookbookRegister;
+  public RecipeRegister recipeRegister;
 
+  /**
+   * Initializes the user interface.
+   *
+   * <p>Initializes the grocery, cookbook, and recipe registers and adds sample groceries, recipes,
+   * and cookbooks.
+   *
+   * @throws Exception if an error occurs
+   */
   public void init() {
     try {
       groceryRegister = new GroceryRegister();
@@ -42,6 +55,11 @@ public class UserInterface {
     }
   }
 
+  /**
+   * Starts the user interface.
+   *
+   * <p>Displays the main menu and handles user input. Stops when the user chooses to exit.
+   */
   public void start() {
     boolean isRunning = true;
     while (isRunning) {
@@ -117,7 +135,8 @@ public class UserInterface {
     }
   }
 
-  private void addSampleGroceries() {
+  /** Creates and adds sample groceries to the grocery register. */
+  public void addSampleGroceries() {
     groceryRegister.add(new Grocery("Milk", "liter", 10, 10, utils.getFutureDate(5)));
     groceryRegister.add(new Grocery("Egg", "pcs", 10, 10, utils.getFutureDate(5)));
     groceryRegister.add(new Grocery("Flour", "kg", 10, 10, utils.getFutureDate(100)));
@@ -125,7 +144,8 @@ public class UserInterface {
     groceryRegister.add(new Grocery("Butter", "kg", 10, 10, utils.getPastDate(1)));
   }
 
-  private void addSampleRecipes() {
+  /** Creates and adds sample recipes to the recipe register. */
+  public void addSampleRecipes() {
     Ingredient ingredient1 = new Ingredient("Milk", "liter", 1);
     Ingredient ingredient2 = new Ingredient("Egg", "pcs", 2);
     Ingredient ingredient3 = new Ingredient("Flour", "kg", 0.5);
@@ -138,7 +158,8 @@ public class UserInterface {
     recipeRegister.add(new Recipe("Cake", "Delicious cake", "Mix and bake", ingredients3));
   }
 
-  private void addSampleCookbooks() {
+  /** Creates and adds sample cookbooks to the cookbook register. */
+  public void addSampleCookbooks() {
     Cookbook cookbook1 = new Cookbook("Breakfast");
     Cookbook cookbook2 = new Cookbook("Dessert");
     cookbook1.add(recipeRegister.find("Pancake"));
@@ -148,7 +169,14 @@ public class UserInterface {
     cookbookRegister.add(cookbook2);
   }
 
-  public void registerGrocery() {
+  /**
+   * Registers a grocery.
+   *
+   * <p>Gets grocery information from the user and adds it to the grocery register.
+   *
+   * @throws Exception if an error occurs
+   */
+  private void registerGrocery() {
     try {
       Grocery grocery = utils.getGrocery();
       groceryRegister.add(grocery);
@@ -158,7 +186,14 @@ public class UserInterface {
     }
   }
 
-  public void registerRecipe() {
+  /**
+   * Registers a recipe.
+   *
+   * <p>Gets recipe information from the user and adds it to the recipe register.
+   *
+   * @throws Exception if an error occurs
+   */
+  private void registerRecipe() {
     try {
       Recipe recipe = utils.getRecipe();
       recipeRegister.add(recipe);
@@ -168,7 +203,14 @@ public class UserInterface {
     }
   }
 
-  public void registerCookbook() {
+  /**
+   * Registers a cookbook.
+   *
+   * <p>Gets cookbook information from the user and adds it to the cookbook register.
+   *
+   * @throws Exception if an error occurs
+   */
+  private void registerCookbook() {
     try {
       Cookbook cookbook = utils.getCookbook();
       cookbookRegister.add(cookbook);
@@ -178,7 +220,12 @@ public class UserInterface {
     }
   }
 
-  public void addGroceryAmount() {
+  /**
+   * Adds amount to a grocery.
+   *
+   * <p>Gets grocery name and amount from the user and adds the amount to the grocery.
+   */
+  private void addGroceryAmount() {
     String name = utils.getString("Enter grocery name: ");
     double amount = utils.getDouble("Enter amount to add: ");
     Grocery grocery = groceryRegister.find(name);
@@ -192,7 +239,13 @@ public class UserInterface {
     }
   }
 
-  public void removeGroceryAmount() {
+  /**
+   * Removes amount from a grocery.
+   *
+   * <p>Gets grocery name and amount from the user and removes the amount from the grocery. If the
+   * grocery amount is less than or equal to 0, the grocery is removed from the grocery register.
+   */
+  private void removeGroceryAmount() {
     String name = utils.getString("Enter grocery name: ");
     double amount = utils.getDouble("Enter amount to remove: ");
     Grocery grocery = groceryRegister.find(name);
@@ -206,7 +259,12 @@ public class UserInterface {
     }
   }
 
-  public void addRecipeToCookbook() {
+  /**
+   * Adds a recipe to a cookbook.
+   *
+   * <p>Gets cookbook name and recipe name from the user and adds the recipe to the cookbook.
+   */
+  private void addRecipeToCookbook() {
     Cookbook cookbook = cookbookRegister.find(utils.getString("Enter cookbook name: "));
     if (cookbook == null) {
       System.out.println("Cookbook not found");
@@ -220,7 +278,8 @@ public class UserInterface {
     cookbook.add(recipe);
   }
 
-  public void searchForGrocery() {
+  /** Searches for a grocery by name using the grocery registers find method. */
+  private void searchForGrocery() {
     String name = utils.getString("Enter grocery name: ");
     Grocery grocery = groceryRegister.find(name);
     if (grocery == null) {
@@ -230,23 +289,28 @@ public class UserInterface {
     }
   }
 
-  public void listGroceries() {
+  /** Lists all groceries in the grocery register. */
+  private void listGroceries() {
     groceryRegister.groceries.forEach(g -> System.out.println(g.getFormattedString()));
   }
 
-  public void listRecipes() {
+  /** Lists all recipes in the recipe register. */
+  private void listRecipes() {
     recipeRegister.recipes.forEach(r -> System.out.println(r.getFormattedString()));
   }
 
-  public void listCookbooks() {
+  /** Lists all cookbooks in the cookbook register. */
+  private void listCookbooks() {
     cookbookRegister.cookbooks.forEach(c -> System.out.println(c.getFormattedString()));
   }
 
-  public void listSortedGroceries() {
+  /** Lists all groceries in the grocery register sorted by name. */
+  private void listSortedGroceries() {
     groceryRegister.getSorted().forEach(g -> System.out.println(g.getFormattedString()));
   }
 
-  public void listExpiredGroceries() {
+  /** Lists all expired groceries in the grocery register. */
+  private void listExpiredGroceries() {
     ArrayList<Grocery> expiredGroceries = groceryRegister.getExpired();
     if (expiredGroceries.isEmpty()) {
       System.out.println("No expired groceries");
@@ -260,7 +324,12 @@ public class UserInterface {
     System.out.println("\nTotal cost of expired groceries: " + totalCost);
   }
 
-  public void suggestCookbookRecipes() {
+  /**
+   * Suggests recipes from cookbooks based on available groceries.
+   *
+   * <p>Iterates over all cookbooks and calls suggestRecipes for each cookbook.
+   */
+  private void suggestCookbookRecipes() {
     if (groceryRegister.groceries.isEmpty()) {
       System.out.println("No groceries available");
       return;
@@ -272,7 +341,12 @@ public class UserInterface {
     cookbookRegister.cookbooks.forEach(this::suggestRecipes);
   }
 
-  public void suggestRecipes(Cookbook cookbook) {
+  /**
+   * Suggests recipes from a cookbook based on available groceries in the grocery register.
+   *
+   * @param cookbook the cookbook used when suggesting recipes
+   */
+  private void suggestRecipes(Cookbook cookbook) {
     boolean containsAtleastOneRecipe = false;
     System.out.println("\nSuggested recipes for " + cookbook.name);
     for (Recipe recipe : cookbook.recipes) {
@@ -287,7 +361,8 @@ public class UserInterface {
     }
   }
 
-  public void checkRecipeIngredients() {
+  /** Checks if a recipe can be made based on available groceries in the grocery register. */
+  private void checkRecipeIngredients() {
     if (groceryRegister.groceries.isEmpty()) {
       System.out.println("No groceries available");
       return;
@@ -309,7 +384,8 @@ public class UserInterface {
     }
   }
 
-  public void listGroceriesBeforeDate() {
+  /** Lists all groceries in the grocery register that expire before a given date. */
+  private void listGroceriesBeforeDate() {
     Date date = utils.getDate("Enter date (dd/MM/yyyy): ");
     for (Grocery grocery : groceryRegister.getGroceriesBeforeDate(date)) {
       System.out.println(grocery.getFormattedString());

@@ -1,4 +1,9 @@
 /Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/types/RecipeTest.java
 /Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/types/GroceryTest.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/utils/UtilsTest.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/UserInterfaceTest.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/registers/RecipeRegisterTest.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/registers/CookbookRegisterTest.java
 /Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/types/CookbookTest.java
 /Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/types/IngredientTest.java
+/Volumes/Samsung USB/NTNU/IDATT1003/Mappe/idatt1003-mappe-2024-Segward/src/test/java/edu/ntnu/idi/idatt/registers/GroceryRegisterTest.java

@@ -28,6 +28,8 @@
 
     <!-- 
         Include maven compiler plugin to be able to run maven tests 
+        Include maven jar plugin to be able to create a jar file
+        Set main class to Main.java
     -->
     <build>
         <plugins>
@@ -36,7 +38,21 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <release>17</release>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>edu.ntnu.idi.idatt.Main</mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
