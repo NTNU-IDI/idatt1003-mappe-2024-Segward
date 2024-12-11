@@ -25,6 +25,6 @@ public class Ingredient {
    * @return the formatted string
    */
   public String getFormattedString() {
-    return name + " " + amount + " " + unit;
+    return String.format("%s %.1f %s", name, amount, unit);
   }
 }

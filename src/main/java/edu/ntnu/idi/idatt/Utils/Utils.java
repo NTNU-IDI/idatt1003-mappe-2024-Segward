@@ -279,7 +279,9 @@ public class Utils {
         15. Check recipe ingredients
         16. Exit
         """);
-    return getInt("Enter choice: ");
+    int choice = getInt("Enter choice: ");
+    System.out.println();
+    return choice;
   }
 
   /** Close the scanner. */

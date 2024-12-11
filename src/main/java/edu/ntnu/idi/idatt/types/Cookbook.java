@@ -1,6 +1,7 @@
 package edu.ntnu.idi.idatt.types;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /** A class representing a cookbook. */
 public class Cookbook {
@@ -45,13 +46,8 @@ public class Cookbook {
    * @return the formatted string
    */
   public String getFormattedString() {
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < recipes.size(); i++) {
-      if (i != 0) {
-        sb.append("\n");
-      }
-      sb.append(recipes.get(i).getFormattedString());
-    }
-    return "\nCookbook: " + name + "\n" + sb.toString();
+    String recipesString =
+        recipes.stream().map(Recipe::getFormattedString).collect(Collectors.joining("\n"));
+    return String.format("\nCookbook: %s\n%s", name, recipesString);
   }
 }

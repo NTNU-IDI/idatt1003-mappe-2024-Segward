@@ -118,7 +118,7 @@ public class GroceryRegisterTest {
 
     assertFalse(groceryRegister.hasSufficientIngredients(ingredients));
   }
-
+  
   /**
    * Negative test the add grocery method
    *

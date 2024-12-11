@@ -58,49 +58,17 @@ public class UserInterfaceTest {
   }
 
   /**
-   * Negative test for the addSampleGroceries method
+   * Negative test
    *
-   * <p>Test the addSampleGroceries method of user interface with null groceryRegister
+   * <p>Test adding samples when the registers are null. This should throw a NullPointerException.
    */
   @Test
-  public void negativeTestAddSampleGroceries() {
+  public void testAddSamplesWithNullRegisters() {
     userInterface.groceryRegister = null;
-    assertThrows(
-        NullPointerException.class,
-        () -> {
-          userInterface.addSampleGroceries();
-        });
-  }
-
-  /**
-   * Negative test for the addSampleRecipes method
-   *
-   * <p>Test the addSampleRecipes method of user interface with null recipeRegister
-   */
-  @Test
-  public void negativeTestAddSampleRecipes() {
     userInterface.recipeRegister = null;
-    assertThrows(
-        NullPointerException.class,
-        () -> {
-          userInterface.addSampleRecipes();
-        });
-  }
-
-  /**
-   * Negative test for the addSampleCookbooks method
-   *
-   * <p>Test the addSampleCookbooks method of user interface with null cookbookRegister
-   */
-  @Test
-  public void negativeTestAddSampleCookbooks() {
     userInterface.cookbookRegister = null;
-    userInterface.recipeRegister = new RecipeRegister();
-    userInterface.addSampleRecipes();
-    assertThrows(
-        NullPointerException.class,
-        () -> {
-          userInterface.addSampleCookbooks();
-        });
+    assertThrows(NullPointerException.class, () -> userInterface.addSampleRecipes());
+    assertThrows(NullPointerException.class, () -> userInterface.addSampleGroceries());
+    assertThrows(NullPointerException.class, () -> userInterface.addSampleCookbooks());
   }
 }

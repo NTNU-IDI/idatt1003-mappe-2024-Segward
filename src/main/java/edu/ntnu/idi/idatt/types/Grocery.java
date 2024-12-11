@@ -1,14 +1,16 @@
 package edu.ntnu.idi.idatt.types;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /** A class representing a grocery item. */
 public class Grocery {
-  public String name;
+  public final String name;
+  public final Date expirationDate;
+  private final String unit;
+  private final double pricePerUnit;
   public double amount;
-  public Date expirationDate;
-  public String unit;
-  public double pricePerUnit;
+  SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
   /**
    * Create a new grocery item.
@@ -52,6 +54,6 @@ public class Grocery {
    * @return the formatted string
    */
   public String getFormattedString() {
-    return "\n" + name + " " + amount + " " + unit + " expires: " + expirationDate;
+    return String.format("%-15s %5.1f %-10s expires %s", name, amount, unit, formatter.format(expirationDate));
   }
 }

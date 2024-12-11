@@ -1,6 +1,7 @@
 package edu.ntnu.idi.idatt.types;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 /** A class representing a recipe. */
 public class Recipe {
@@ -37,17 +38,10 @@ public class Recipe {
    * @return the formatted string
    */
   public String getFormattedString() {
-    StringBuilder sb = new StringBuilder();
-    for (Ingredient ingredient : ingredients) {
-      sb.append("\t-  ").append(ingredient.getFormattedString()).append("\n");
-    }
+    String ingredientsString =
+        ingredients.stream().map(Ingredient::getFormattedString).collect(Collectors.joining(", "));
     return String.format(
-        "\n"
-            + "Recipe: %s\n"
-            + "Description: %s\n"
-            + "Ingredients:\n"
-            + "%sInstructions: %s\n"
-            + "This recipe feeds: %s people",
-        name, description, sb.toString(), instructions, peopleToServe);
+        "Recipe: %s | %s | Feeds: %s\n\tIngredients: %s\n\tInstructions: %s",
+        name, description, peopleToServe, ingredientsString, instructions);
   }
 }

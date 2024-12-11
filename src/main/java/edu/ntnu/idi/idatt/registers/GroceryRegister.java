@@ -47,6 +47,42 @@ public class GroceryRegister {
   }
 
   /**
+   * Add an amount of a grocery.
+   *
+   * @param name name of grocery to add amount to, must exist in register
+   * @param amount amount to add
+   */
+  public void addAmount(String groceryName, double amount) {
+    Grocery existingGrocery = find(groceryName);
+    if (existingGrocery == null) {
+      throw new IllegalArgumentException("Grocery doesnt exist");
+    }
+
+    existingGrocery.amount += amount;
+    if (existingGrocery.amount < 0) {
+      groceries.remove(existingGrocery);
+    }
+  }
+
+  /**
+   * Remove an amount of a grocery.
+   *
+   * @param name name of grocery to remove amount from, must exist in register
+   * @param amount amount to remove
+   */
+  public void removeAmount(String groceryName, double amount) {
+    Grocery existingGrocery = find(groceryName);
+    if (existingGrocery == null) {
+      throw new IllegalArgumentException("Grocery doesnt exist");
+    }
+
+    existingGrocery.amount -= amount;
+    if (existingGrocery.amount < 0) {
+      groceries.remove(existingGrocery);
+    }
+  }
+
+  /**
    * Get the groceries that are expired.
    *
    * @return the expired groceries
