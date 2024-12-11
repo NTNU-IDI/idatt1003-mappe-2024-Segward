@@ -3,8 +3,6 @@ package edu.ntnu.idi.idatt;
 import edu.ntnu.idi.idatt.Utils.Utils;
 import edu.ntnu.idi.idatt.registers.*;
 import edu.ntnu.idi.idatt.types.*;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -40,25 +38,12 @@ public class UserInterface {
    * <p>Displays the main menu and handles user input. Stops when the user chooses to exit.
    */
 
-
-   /**
-    * 1.  Register grocery
-        2.  Register recipe
-        3.  Register cookbook
-        4.  Add grocery amount
-        5.  Remove grocery amount
-        6.  Add recipe to cookbook
-        7.  Search for grocery
-        8.  List groceries
-        9.  List recipes
-        10. List cookbooks
-        11. List expired groceries
-        12. List sorted groceries
-        13. List groceries before date
-        14. Suggest cookbook recipes
-        15. Check recipe ingredients
-        16. Exit
-    */
+  /**
+   * 1. Register grocery 2. Register recipe 3. Register cookbook 4. Add grocery amount 5. Remove
+   * grocery amount 6. Add recipe to cookbook 7. Search for grocery 8. List groceries 9. List
+   * recipes 10. List cookbooks 11. List expired groceries 12. List sorted groceries 13. List
+   * groceries before date 14. Suggest cookbook recipes 15. Check recipe ingredients 16. Exit
+   */
   public void start() {
     boolean isRunning = true;
     while (isRunning) {

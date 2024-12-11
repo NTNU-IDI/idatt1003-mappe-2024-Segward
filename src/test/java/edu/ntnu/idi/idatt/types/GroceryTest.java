@@ -37,11 +37,13 @@ public class GroceryTest {
     assertEquals(3.0, grocery.getPrice());
   }
 
-  // return String.format("%-15s %5.1f %-10s expires %s", name, amount, unit, formatter.format(expirationDate));
+  // return String.format("%-15s %5.1f %-10s expires %s", name, amount, unit,
+  // formatter.format(expirationDate));
   /** Test the getFormattedString method */
   @Test
   public void testGetFormattedString() {
-    String expected = String.format("%-15s %15.1f %-10s expires %s", "Milk", 2.0, "liter", "31/12/2023");
+    String expected =
+        String.format("%-15s %15.1f %-10s expires %s", "Milk", 2.0, "liter", "31/12/2023");
     assertEquals(expected, grocery.getFormattedString());
   }
 }

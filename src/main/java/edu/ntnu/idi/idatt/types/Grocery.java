@@ -54,6 +54,7 @@ public class Grocery {
    * @return the formatted string
    */
   public String getFormattedString() {
-    return String.format("%-15s %15.1f %-10s expires %s", name, amount, unit, formatter.format(expirationDate));
+    return String.format(
+        "%-15s %15.1f %-10s expires %s", name, amount, unit, formatter.format(expirationDate));
   }
 }
