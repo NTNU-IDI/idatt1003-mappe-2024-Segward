@@ -33,7 +33,7 @@ public class Grocery {
   /**
    * Set the amount of the grocery item.
    *
-   * @param amount
+   * @param amount the new amount of the grocery item
    */
   public void setAmount(double amount) {
     this.amount = amount;

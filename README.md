@@ -28,14 +28,16 @@ The repository can be found [here](https://github.com/NTNU-IDI/idatt1003-mappe-2
 [//]: # "TODO: Describe how to run your project here. What is the main class? What is the main method?
 What is the input and output of the program? What is the expected behaviour of the program?"
 
-The project has a main method that can be found at `src/main/java/edu/ntnu/idi/idatt/Main.java`. This method starts the whole application. To build the maven project use `mvn package`. Then run the built jar file with `java -jar target/Mappe-1.0-SNAPSHOT.jar`
+The project has a main method that can be found at `src/main/java/edu/ntnu/idi/idatt/Main.java`. This method starts the whole application. To build the maven project use `mvn package`. Then run the built jar file with `java -jar target/Mappe-1.0-SNAPSHOT.jar`. You can also run the code in Intellj IDEA by running the main file, which contains the main method. Look at the image below for visual details for running in Intellj IDEA. <br /> <br />
+<img src="IntelljRun.png" alt="Intellj Test Image" width="600">
 
-## How to run the tests
+
+## How to run the tests 
 
 [//]: # "TODO: Describe how to run the tests here."
 
-To run tests you need to use maven with the command `mvn test`. <br />
-The positive tests contains normal behavior situations where the variables have expected values. The negative tests contains unexpected situations or invalid values
+There are several methods to run the project tests. A method which only uses the terminal is using `mvn test`. You can also use Intellj IDEA to test the project by running the test files or by running the tests in idatt. Look at the image below for visual details for testing with Intellj IDEA. <br /> <br />
+<img src="IntelljTest.png" alt="Intellj Test Image" width="600">
 
 ## References
 

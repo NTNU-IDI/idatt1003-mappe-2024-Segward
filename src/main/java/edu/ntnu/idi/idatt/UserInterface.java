@@ -1,8 +1,14 @@
 package edu.ntnu.idi.idatt;
 
-import edu.ntnu.idi.idatt.Utils.Utils;
-import edu.ntnu.idi.idatt.registers.*;
-import edu.ntnu.idi.idatt.types.*;
+
+import edu.ntnu.idi.idatt.registers.CookbookRegister;
+import edu.ntnu.idi.idatt.registers.GroceryRegister;
+import edu.ntnu.idi.idatt.registers.RecipeRegister;
+import edu.ntnu.idi.idatt.types.Cookbook;
+import edu.ntnu.idi.idatt.types.Grocery;
+import edu.ntnu.idi.idatt.types.Ingredient;
+import edu.ntnu.idi.idatt.types.Recipe;
+import edu.ntnu.idi.idatt.utils.Utils;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -12,9 +18,9 @@ import java.util.Date;
  * <p>This class is responsible for handling user input and displaying information to the user.
  */
 public class UserInterface {
-  private Utils utils = new Utils();
-  public GroceryRegister groceryRegister;
+  private final Utils utils = new Utils();
   public CookbookRegister cookbookRegister;
+  public GroceryRegister groceryRegister;
   public RecipeRegister recipeRegister;
 
   /**
@@ -36,13 +42,6 @@ public class UserInterface {
    * Starts the user interface.
    *
    * <p>Displays the main menu and handles user input. Stops when the user chooses to exit.
-   */
-
-  /**
-   * 1. Register grocery 2. Register recipe 3. Register cookbook 4. Add grocery amount 5. Remove
-   * grocery amount 6. Add recipe to cookbook 7. Search for grocery 8. List groceries 9. List
-   * recipes 10. List cookbooks 11. List expired groceries 12. List sorted groceries 13. List
-   * groceries before date 14. Suggest cookbook recipes 15. Check recipe ingredients 16. Exit
    */
   public void start() {
     boolean isRunning = true;
@@ -89,12 +88,12 @@ public class UserInterface {
 
   /** Creates and adds sample recipes to the recipe register. */
   public void addSampleRecipes() {
-    Ingredient ingredient1 = new Ingredient("Milk", "liter", 3);
-    Ingredient ingredient2 = new Ingredient("Egg", "pcs", 5);
-    Ingredient ingredient3 = new Ingredient("Flour", "kg", 8);
-    Ingredient ingredient4 = new Ingredient("Sugar", "kg", 4);
-    Ingredient ingredient5 = new Ingredient("Butter", "kg", 3);
-    Ingredient ingredient6 = new Ingredient("Salt", "kg", 19);
+    final Ingredient ingredient1 = new Ingredient("Milk", "liter", 3);
+    final Ingredient ingredient2 = new Ingredient("Egg", "pcs", 5);
+    final Ingredient ingredient3 = new Ingredient("Flour", "kg", 8);
+    final Ingredient ingredient4 = new Ingredient("Sugar", "kg", 4);
+    final Ingredient ingredient5 = new Ingredient("Butter", "kg", 3);
+    final Ingredient ingredient6 = new Ingredient("Salt", "kg", 19);
 
     ArrayList<Ingredient> ingredients1 = new ArrayList<>();
     ingredients1.add(ingredient1);

@@ -2,7 +2,6 @@ package edu.ntnu.idi.idatt.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import edu.ntnu.idi.idatt.Utils.Utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.junit.jupiter.api.BeforeEach;

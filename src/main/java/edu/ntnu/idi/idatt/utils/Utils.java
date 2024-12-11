@@ -1,4 +1,4 @@
-package edu.ntnu.idi.idatt.Utils;
+package edu.ntnu.idi.idatt.utils;
 
 import edu.ntnu.idi.idatt.types.Cookbook;
 import edu.ntnu.idi.idatt.types.Grocery;
@@ -10,16 +10,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
-/** A utility class for handling user input and dates */
+/** A utility class for handling user input and dates. */
 public class Utils {
-  private static Scanner scanner = new Scanner(System.in);
-  private static SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-  private Calendar calendar = Calendar.getInstance();
+  private static final Scanner scanner = new Scanner(System.in);
+  private static final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+  private final Calendar calendar = Calendar.getInstance();
 
   /**
    * Get a future date from the current date.
    *
-   * @param days
+   * @param days the days into the future from current date
    * @return the future date
    */
   public Date getFutureDate(int days) {
@@ -32,7 +32,7 @@ public class Utils {
   /**
    * Get a past date from the current date.
    *
-   * @param days
+   * @param days the days into the past from current date
    * @return the past date
    */
   public Date getPastDate(int days) {
@@ -45,7 +45,7 @@ public class Utils {
   /**
    * Reset the time of a date to 00:00:00.000.
    *
-   * @param date
+   * @param date date to reset
    * @return the date with the time reset
    */
   public Date resetTime(Date date) {
@@ -61,7 +61,7 @@ public class Utils {
   /**
    * Get a string from the user.
    *
-   * @param prompt
+   * @param prompt String to print to user
    * @return the string entered by the user
    */
   public String getString(String prompt) {
@@ -72,7 +72,7 @@ public class Utils {
   /**
    * Get an integer from the user.
    *
-   * @param prompt
+   * @param prompt String to print to user
    * @return the integer entered by the user
    */
   public int getInt(String prompt) {
@@ -89,7 +89,7 @@ public class Utils {
   /**
    * Verify that the input is an integer.
    *
-   * @param input
+   * @param input Verify a string input
    * @return true if the input is an integer, false otherwise
    */
   private boolean verifyIntInput(String input) {
@@ -104,7 +104,7 @@ public class Utils {
   /**
    * Get a double from the user.
    *
-   * @param prompt
+   * @param prompt String to print to user
    * @return the double entered by the user
    */
   public double getDouble(String prompt) {
@@ -121,7 +121,7 @@ public class Utils {
   /**
    * Verify that the input is a double.
    *
-   * @param input
+   * @param input String input to verify
    * @return true if the input is a double, false otherwise
    */
   private boolean verifyDoubleInput(String input) {
@@ -136,7 +136,7 @@ public class Utils {
   /**
    * Get a date from the user.
    *
-   * @param prompt
+   * @param prompt String to print to user
    * @return the date entered by the user
    */
   public Date getDate(String prompt) {
@@ -157,7 +157,7 @@ public class Utils {
   /**
    * Verify that the input is a valid date.
    *
-   * @param input
+   * @param input String input to verify
    * @return true if the input is a valid date, false otherwise
    */
   private boolean verifyDateInput(String input) {

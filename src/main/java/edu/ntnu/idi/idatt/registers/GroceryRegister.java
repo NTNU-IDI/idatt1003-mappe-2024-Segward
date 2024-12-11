@@ -1,6 +1,7 @@
 package edu.ntnu.idi.idatt.registers;
 
-import edu.ntnu.idi.idatt.types.*;
+import edu.ntnu.idi.idatt.types.Grocery;
+import edu.ntnu.idi.idatt.types.Ingredient;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.stream.Collectors;
@@ -49,7 +50,7 @@ public class GroceryRegister {
   /**
    * Add an amount of a grocery.
    *
-   * @param name name of grocery to add amount to, must exist in register
+   * @param groceryName name of grocery to add amount to, must exist in register
    * @param amount amount to add
    */
   public void addAmount(String groceryName, double amount) {
@@ -67,7 +68,7 @@ public class GroceryRegister {
   /**
    * Remove an amount of a grocery.
    *
-   * @param name name of grocery to remove amount from, must exist in register
+   * @param groceryName name of grocery to remove amount from, must exist in register
    * @param amount amount to remove
    */
   public void removeAmount(String groceryName, double amount) {
@@ -122,7 +123,7 @@ public class GroceryRegister {
   /**
    * Check if the grocery register has sufficient ingredients.
    *
-   * @param ArrayList<Ingredient> ingredients
+   * @param ingredients ingredients
    * @return true if the register has sufficient ingredients, false otherwise
    */
   public boolean hasSufficientIngredients(ArrayList<Ingredient> ingredients) {
@@ -132,7 +133,7 @@ public class GroceryRegister {
   /**
    * Check if the register has enough of a given ingredient.
    *
-   * @param ingredient
+   * @param ingredient the ingredient
    * @return true if the register has enough of the ingredient, false otherwise
    */
   private boolean hasSufficientIngredient(Ingredient ingredient) {
