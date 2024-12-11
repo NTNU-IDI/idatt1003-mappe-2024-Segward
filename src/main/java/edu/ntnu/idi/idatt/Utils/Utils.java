@@ -178,7 +178,7 @@ public class Utils {
    * @return the grocery entered by the user
    */
   public Grocery getGrocery() {
-    System.out.println("\nEnter the grocery details.\n");
+    System.out.println("Enter the grocery details.\n");
     return new Grocery(
         getString("Enter grocery name: "),
         getString("Enter grocery unit: "),
@@ -232,7 +232,7 @@ public class Utils {
    * @return the recipe entered by the user
    */
   public Recipe getRecipe() {
-    System.out.println("\nEnter the recipe details.\n");
+    System.out.println("Enter the recipe details.\n");
     return new Recipe(
         getString("Enter recipe name: "),
         getString("Enter recipe description: "),

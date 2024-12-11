@@ -48,6 +48,6 @@ public class Cookbook {
   public String getFormattedString() {
     String recipesString =
         recipes.stream().map(Recipe::getFormattedString).collect(Collectors.joining("\n"));
-    return String.format("\nCookbook: %s\n%s", name, recipesString);
+    return String.format("Cookbook: %s\n%s", name, recipesString);
   }
 }

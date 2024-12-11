@@ -41,7 +41,7 @@ public class GroceryTest {
   /** Test the getFormattedString method */
   @Test
   public void testGetFormattedString() {
-    String expected = String.format("%-15s %5.1f %-10s expires %s", "Milk", 2.0, "liter", "31/12/2023");
+    String expected = String.format("%-15s %15.1f %-10s expires %s", "Milk", 2.0, "liter", "31/12/2023");
     assertEquals(expected, grocery.getFormattedString());
   }
 }

@@ -3,6 +3,8 @@ package edu.ntnu.idi.idatt;
 import edu.ntnu.idi.idatt.Utils.Utils;
 import edu.ntnu.idi.idatt.registers.*;
 import edu.ntnu.idi.idatt.types.*;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -37,6 +39,26 @@ public class UserInterface {
    *
    * <p>Displays the main menu and handles user input. Stops when the user chooses to exit.
    */
+
+
+   /**
+    * 1.  Register grocery
+        2.  Register recipe
+        3.  Register cookbook
+        4.  Add grocery amount
+        5.  Remove grocery amount
+        6.  Add recipe to cookbook
+        7.  Search for grocery
+        8.  List groceries
+        9.  List recipes
+        10. List cookbooks
+        11. List expired groceries
+        12. List sorted groceries
+        13. List groceries before date
+        14. Suggest cookbook recipes
+        15. Check recipe ingredients
+        16. Exit
+    */
   public void start() {
     boolean isRunning = true;
     while (isRunning) {
@@ -53,9 +75,9 @@ public class UserInterface {
         case 10 -> listCookbooks();
         case 11 -> listExpiredGroceries();
         case 12 -> listSortedGroceries();
-        case 13 -> suggestCookbookRecipes();
-        case 14 -> checkRecipeIngredients();
-        case 15 -> listGroceriesBeforeDate();
+        case 13 -> listGroceriesBeforeDate();
+        case 14 -> suggestCookbookRecipes();
+        case 15 -> checkRecipeIngredients();
         case 16 -> {
           utils.closeScanner();
           isRunning = false;
@@ -69,25 +91,25 @@ public class UserInterface {
 
   /** Creates and adds sample groceries to the grocery register. */
   public void addSampleGroceries() {
-    groceryRegister.add(new Grocery("Milk", "liter", 10, 10, utils.getFutureDate(5)));
-    groceryRegister.add(new Grocery("Egg", "pcs", 10, 10, utils.getFutureDate(5)));
-    groceryRegister.add(new Grocery("Flour", "kg", 10, 10, utils.getFutureDate(100)));
+    groceryRegister.add(new Grocery("Milk", "liter", 3, 10, utils.getFutureDate(5)));
+    groceryRegister.add(new Grocery("Egg", "pcs", 12, 10, utils.getFutureDate(5)));
+    groceryRegister.add(new Grocery("Flour", "kg", 3004, 10, utils.getFutureDate(100)));
     groceryRegister.add(new Grocery("Sugar", "kg", 10, 10, utils.getPastDate(3)));
-    groceryRegister.add(new Grocery("Butter", "kg", 10, 10, utils.getPastDate(1)));
-    groceryRegister.add(new Grocery("Salt", "kg", 10, 10, utils.getFutureDate(10)));
-    groceryRegister.add(new Grocery("Pepper", "kg", 10, 10, utils.getFutureDate(10)));
-    groceryRegister.add(new Grocery("Vanilla sugar", "kg", 10, 10, utils.getFutureDate(10)));
-    groceryRegister.add(new Grocery("Baking powder", "kg", 10, 10, utils.getFutureDate(10)));
+    groceryRegister.add(new Grocery("Butter", "kg", 8, 10, utils.getPastDate(1)));
+    groceryRegister.add(new Grocery("Salt", "kg", 4, 10, utils.getFutureDate(10)));
+    groceryRegister.add(new Grocery("Pepper", "kg", 99, 10, utils.getFutureDate(10)));
+    groceryRegister.add(new Grocery("Vanilla sugar", "kg", 2, 10, utils.getFutureDate(10)));
+    groceryRegister.add(new Grocery("Baking powder", "kg", 1, 10, utils.getFutureDate(10)));
   }
 
   /** Creates and adds sample recipes to the recipe register. */
   public void addSampleRecipes() {
-    Ingredient ingredient1 = new Ingredient("Milk", "liter", 1);
-    Ingredient ingredient2 = new Ingredient("Egg", "pcs", 2);
-    Ingredient ingredient3 = new Ingredient("Flour", "kg", 0.5);
-    Ingredient ingredient4 = new Ingredient("Sugar", "kg", 0.5);
-    Ingredient ingredient5 = new Ingredient("Butter", "kg", 0.5);
-    Ingredient ingredient6 = new Ingredient("Salt", "kg", 0.01);
+    Ingredient ingredient1 = new Ingredient("Milk", "liter", 3);
+    Ingredient ingredient2 = new Ingredient("Egg", "pcs", 5);
+    Ingredient ingredient3 = new Ingredient("Flour", "kg", 8);
+    Ingredient ingredient4 = new Ingredient("Sugar", "kg", 4);
+    Ingredient ingredient5 = new Ingredient("Butter", "kg", 3);
+    Ingredient ingredient6 = new Ingredient("Salt", "kg", 19);
 
     ArrayList<Ingredient> ingredients1 = new ArrayList<>();
     ingredients1.add(ingredient1);
@@ -100,7 +122,7 @@ public class UserInterface {
     ingredients2.add(ingredient2);
     ingredients2.add(ingredient3);
     ingredients2.add(ingredient4);
-    ingredients2.add(ingredient5);
+    ingredients2.add(ingredient6);
 
     ArrayList<Ingredient> ingredients3 = new ArrayList<>();
     ingredients3.add(ingredient1);
@@ -108,7 +130,6 @@ public class UserInterface {
     ingredients3.add(ingredient3);
     ingredients3.add(ingredient4);
     ingredients3.add(ingredient5);
-    ingredients3.add(ingredient6);
 
     recipeRegister.add(new Recipe("Pancake", "Delicious pancake", "Mix and fry", 4, ingredients1));
     recipeRegister.add(new Recipe("Waffle", "Delicious waffle", "Mix and fry", 3, ingredients2));
@@ -307,7 +328,7 @@ public class UserInterface {
    */
   private void suggestRecipes(Cookbook cookbook) {
     boolean containsAtleastOneRecipe = false;
-    System.out.println("\nSuggested recipes for " + cookbook.name);
+    System.out.println("Cookbook: " + cookbook.name);
     for (Recipe recipe : cookbook.recipes) {
       boolean containsAllIngredients = groceryRegister.hasSufficientIngredients(recipe.ingredients);
       if (containsAllIngredients) {
@@ -317,7 +338,7 @@ public class UserInterface {
     }
 
     if (!containsAtleastOneRecipe) {
-      System.out.println("\nNo recipes available for " + cookbook.name);
+      System.out.println("No recipes available for " + cookbook.name);
     }
   }
 

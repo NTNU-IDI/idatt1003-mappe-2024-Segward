@@ -59,7 +59,7 @@ public class GroceryRegister {
     }
 
     existingGrocery.amount += amount;
-    if (existingGrocery.amount < 0) {
+    if (existingGrocery.amount <= 0) {
       groceries.remove(existingGrocery);
     }
   }
@@ -77,7 +77,7 @@ public class GroceryRegister {
     }
 
     existingGrocery.amount -= amount;
-    if (existingGrocery.amount < 0) {
+    if (existingGrocery.amount <= 0) {
       groceries.remove(existingGrocery);
     }
   }

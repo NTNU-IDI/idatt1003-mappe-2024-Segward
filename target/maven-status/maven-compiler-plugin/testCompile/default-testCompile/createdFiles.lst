@@ -4,6 +4,7 @@ edu/ntnu/idi/idatt/types/IngredientTest.class
 edu/ntnu/idi/idatt/utils/UtilsTest.class
 edu/ntnu/idi/idatt/registers/CookbookRegisterTest.class
 edu/ntnu/idi/idatt/UserInterfaceTest.class
+edu/ntnu/idi/idatt/KitchenTest.class
 edu/ntnu/idi/idatt/types/GroceryTest.class
 edu/ntnu/idi/idatt/registers/GroceryRegisterTest.class
 edu/ntnu/idi/idatt/registers/RecipeRegisterTest.class

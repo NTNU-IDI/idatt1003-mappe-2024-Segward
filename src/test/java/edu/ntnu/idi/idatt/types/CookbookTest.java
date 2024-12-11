@@ -66,7 +66,7 @@ public class CookbookTest {
     cookbook.add(recipe2);
     String expected =
         String.format(
-            "\n%s\n\t%s\n\t%s",
+            "%s\n\t%s\n\t%s",
             "Cookbook: Desserts", recipe1.getFormattedString(), recipe2.getFormattedString());
     assertNotEquals(expected, cookbook.getFormattedString());
   }
