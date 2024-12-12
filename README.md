@@ -28,7 +28,7 @@ The repository can be found [here](https://github.com/NTNU-IDI/idatt1003-mappe-2
 [//]: # "TODO: Describe how to run your project here. What is the main class? What is the main method?
 What is the input and output of the program? What is the expected behaviour of the program?"
 
-The project has a main method that can be found at `src/main/java/edu/ntnu/idi/idatt/Main.java`. This method starts the whole application. To build the maven project use `mvn package`. Then run the built jar file with `java -jar target/Mappe-1.0-SNAPSHOT.jar`. You can also run the code in Intellj IDEA by running the main file, which contains the main method. Look at the image below for visual details for running in Intellj IDEA. <br /> <br />
+The project has a main method that can be found at `src/main/java/edu/ntnu/idi/idatt/Main.java`. This method starts the whole application. To build the maven project use `mvn clean package`. Then run the built jar file with `java -jar target/Mappe-1.0-SNAPSHOT.jar`. You can also run the code in Intellj IDEA by running the main file, which contains the main method. Look at the image below for visual details for running in Intellj IDEA. <br /> <br />
 <img src="IntelljRun.png" alt="Intellj Test Image" width="600">
 
 
